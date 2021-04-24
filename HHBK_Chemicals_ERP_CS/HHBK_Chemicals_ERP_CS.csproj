@@ -46,18 +46,34 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Kunde\Kunde.cs" />
+        <Compile Include="Datenbank\FakeDatenbank.cs" />
+        <Compile Include="Datenbank\IDatenbank.cs" />
+        <Compile Include="Kunden\ControllerKunde.cs" />
+        <Compile Include="Kunden\IControllerKunde.cs" />
+        <Compile Include="Kunden\IModelKunde.cs" />
+        <Compile Include="Kunden\IViewKunde.cs" />
+        <Compile Include="Kunden\Kunde.cs" />
+        <Compile Include="Kunden\ModelKunde.cs" />
+        <Compile Include="Kunden\ViewKunde.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Kunden\ViewKunde.Designer.cs">
+          <DependentUpon>ViewKunde.cs</DependentUpon>
+        </Compile>
         <Compile Include="Lager\Bestellposition.cs" />
         <Compile Include="Lager\Lagerposition.cs" />
-        <Compile Include="Lieferung\Lagerposition_has_Rezept.cs">
-          <DependentUpon>Lieferposition.cs</DependentUpon>
+        <Compile Include="Lager\Lagerposition_has_Rezept.cs" />
+        <Compile Include="Lager\Lieferposition.cs" />
+        <Compile Include="Main\ControllerMain.cs" />
+        <Compile Include="Main\IControllerMain.cs" />
+        <Compile Include="Main\IModelMain.cs" />
+        <Compile Include="Main\IViewMain.cs" />
+        <Compile Include="Main\ModelMain.cs" />
+        <Compile Include="Main\ViewMain.cs">
+          <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Lieferung\Lieferposition.cs" />
-        <Compile Include="MainForm.cs">
-            <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="MainForm.Designer.cs">
-            <DependentUpon>MainForm.cs</DependentUpon>
+        <Compile Include="Main\ViewMain.Designer.cs">
+          <DependentUpon>ViewMain.cs</DependentUpon>
         </Compile>
         <Compile Include="Produktion\Produkt.cs" />
         <Compile Include="Produktion\Produktionsplan.cs" />
@@ -67,6 +83,12 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Zahlung\Rechnungsposition.cs" />
         <Compile Include="Zahlung\Zahlungseingang.cs" />
+        <EmbeddedResource Include="Kunden\ViewKunde.resx">
+          <DependentUpon>ViewKunde.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Main\ViewMain.resx">
+          <DependentUpon>ViewMain.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>

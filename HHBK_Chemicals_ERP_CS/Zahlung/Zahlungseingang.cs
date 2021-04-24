@@ -1,30 +1,18 @@
 using System;
+using HHBK_Chemicals_ERP_CS.Kunden;
 
 namespace HHBK_Chemicals_ERP_CS.Zahlung
 {
     /// <summary>
-    /// Repräsentiert eine Zahlung
+    ///     Repräsentiert eine Zahlung
     /// </summary>
     public class Zahlungseingang
     {
         /// <summary>
-        /// Die einzigartige Identifikationsnummer des <see cref="Zahlungseingang"/>
+        ///     Die einzigartige Identifikationsnummer des <see cref="Zahlungseingang" />
         /// </summary>
         /// <remarks>Dies ist der Primärschlüssel auf der Datenbank</remarks>
         public readonly int Zahlungseingangsnummer;
-        
-        public string VerwendungszweckKdNr { get; private set; }
-        public string VerweundungszweckeBestNr { get; private set; }
-        public DateTimeOffset Datum { get; private set; }
-        public string NameKontoinhaber { get; private set; }
-        public string IBAN { get; private set; }
-        
-        /// <summary>
-        /// Der <see cref="HHBK_Chemicals_ERP_CS.Kunde.Kunde"/> des <see cref="Zahlungseingang"/>.
-        /// </summary>
-        /// <remarks>Dies ist ein Fremdschlüssel, "Kunde_Kundennummer", auf der Datenbank</remarks>
-        /// <seealso cref="HHBK_Chemicals_ERP_CS.Kunde.Kunde"/>
-        public Kunde.Kunde Kunde { get; private set; }
 
 
         public Zahlungseingang(int zahlungseingangsnummer,
@@ -33,15 +21,28 @@ namespace HHBK_Chemicals_ERP_CS.Zahlung
             DateTimeOffset datum,
             string nameKontoinhaber,
             string iban,
-            Kunde.Kunde kunde)
+            Kunde kunde)
         {
             Zahlungseingangsnummer = zahlungseingangsnummer;
             VerwendungszweckKdNr = verwendungszweckKdNr;
             VerweundungszweckeBestNr = verweundungszweckeBestNr;
             Datum = datum;
             NameKontoinhaber = nameKontoinhaber;
-            IBAN = iban;
+            Iban = iban;
             Kunde = kunde;
         }
+
+        public string VerwendungszweckKdNr { get; }
+        public string VerweundungszweckeBestNr { get; }
+        public DateTimeOffset Datum { get; }
+        public string NameKontoinhaber { get; }
+        public string Iban { get; }
+
+        /// <summary>
+        ///     Der <see cref="Kunden.Kunde" /> des <see cref="Zahlungseingang" />.
+        /// </summary>
+        /// <remarks>Dies ist ein Fremdschlüssel, "Kunde_Kundennummer", auf der Datenbank</remarks>
+        /// <seealso cref="Kunden.Kunde" />
+        public Kunde Kunde { get; }
     }
 }

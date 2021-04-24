@@ -1,22 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using HHBK_Chemicals_ERP_CS.Datenbank;
+using HHBK_Chemicals_ERP_CS.Main;
 
 namespace HHBK_Chemicals_ERP_CS
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///     Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            var datenbank = new FakeDatenbank();
+
+            var viewMain = new ViewMain();
+            var controllerMain = new ControllerMain();
+            var modelMain = new ModelMain(datenbank);
+
+            viewMain.Controller = controllerMain;
+            controllerMain.ModelMain = modelMain;
+            modelMain.ViewMain = viewMain;
+
+            Application.Run(viewMain);
         }
     }
 }
