@@ -4,25 +4,24 @@ using HHBK_Chemicals_ERP_CS.Kunden;
 namespace HHBK_Chemicals_ERP_CS.Datenbank
 {
     /// <summary>
-    ///     Eine einfache, unechte Datenbank für das experimentieren gedacht.
+    ///     Eine einfache, unechte Datenbank zum experimentieren mit der Anwendung
     /// </summary>
     /// <seealso cref="IDatenbank" />
     public class FakeDatenbank : IDatenbank
     {
         /// <summary>
-        ///     Eine fake-Tabelle für Kunden
+        ///     Eine "Tabelle" für Kunden
         /// </summary>
         private readonly Dictionary<int, Kunde> _kunden;
 
         /// <summary>
-        ///     Ein auto increment variable, welche bei jeder erstellung eines
-        ///     <see cref="Kunde" />ns erstellt wird und als eine einzigartige
-        ///     <see cref="Kunde.Kundennummer" /> verwendet wird
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Kunde" />ns erhöht wird und
+        ///     als eine einzigartige <see cref="Kunde.Kundennummer" /> verwendet wird
         /// </summary>
         private int _autoIncrementCount;
 
         /// <summary>
-        ///     Initialisiert eine Datenbank mit 3 Beispieleinträgen.
+        ///     Initialisiert eine Datenbank mit 3 Beispieleinträgen
         /// </summary>
         public FakeDatenbank()
         {

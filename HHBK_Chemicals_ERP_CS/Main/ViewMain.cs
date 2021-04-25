@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace HHBK_Chemicals_ERP_CS.Main
 {
-    /// <inheritdoc cref="IViewMain"/>
+    /// <inheritdoc cref="IViewMain" />
     public partial class ViewMain : Form, IViewMain
     {
         public ViewMain()
@@ -21,30 +21,36 @@ namespace HHBK_Chemicals_ERP_CS.Main
             kundenListBox.Items.AddRange(namen.Cast<object>().ToArray());
         }
 
-        private void kundeNummerAufrufenButton_Click(object sender, EventArgs e)
-        {
-            Controller.KundeMitNummerÖffnen((int) kundenNummerAufrufenNumericUpDown.Value);
-        }
-
-        private void kundenListBox_DoubleClick(object sender, EventArgs e)
-        {
-            Controller.KundeGeklickt(kundenListBox.SelectedIndex);
-        }
-
-        private void kundenListBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                Controller.KundeGeklickt(kundenListBox.SelectedIndex);
-        }
+        #region Events
 
         private void ViewMain_Load(object sender, EventArgs e)
         {
             Controller.FormGeladen();
         }
 
+
+        private void kundenListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Controller.KundeGeklickt(kundenListBox.SelectedIndex);
+        }
+        private void kundenListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Controller.KundeGeklickt(kundenListBox.SelectedIndex);
+        }
+
+
+        private void kundeNummerAufrufenButton_Click(object sender, EventArgs e)
+        {
+            Controller.KundeMitNummerÖffnen((int) kundenNummerAufrufenNumericUpDown.Value);
+        }
+
+
         private void neuenKundeButton_Click(object sender, EventArgs e)
         {
             Controller.NeuenKundeErstellen();
         }
+
+        #endregion
     }
 }

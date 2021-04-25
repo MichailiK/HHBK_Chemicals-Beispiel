@@ -46,21 +46,28 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         /// <summary>
         ///     Die <see cref="Produktion.Produktionsposition" /> des <see cref="Produktionsplan" />.
         /// </summary>
-        /// <remarks>Dies ist ein Fremdschlüssel, "Produktionsposition_Produktionspositionsnummer", auf der Datenbank</remarks>
+        /// <remarks>
+        ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Produktionspositionsnummer", auf der Datenbank
+        /// </remarks>
         /// <seealso cref="Produktion.Produktionsposition" />
         public Produktionsposition Produktionsposition { get; set; }
 
         /// <summary>
         ///     Die <see cref="Lager.Bestellposition" /> des <see cref="Produktionsplan" />.
         /// </summary>
-        /// <remarks>Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Bestellpositionsnummer", auf der Datenbank</remarks>
+        /// <remarks>
+        ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Bestellpositionsnummer", auf der
+        ///     Datenbank
+        /// </remarks>
         /// <seealso cref="Lager.Bestellposition" />
         public Bestellposition Bestellposition { get; set; }
 
         /// <summary>
         ///     Die <see cref="Kunden.Kunde" /> des <see cref="Produktionsplan" />.
         /// </summary>
-        /// <remarks>Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Kunde_Kundenummer", auf der Datenbank</remarks>
+        /// <remarks>
+        ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Kunde_Kundenummer", auf der Datenbank
+        /// </remarks>
         /// <seealso cref="Lager.Bestellposition" />
         // TODO ist das nicht bereits in Bestellposition angegeben?
         public Kunde Kunde { get; set; }

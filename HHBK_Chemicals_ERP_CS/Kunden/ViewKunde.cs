@@ -6,11 +6,12 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
     /// <inheritdoc cref="IViewKunde" />
     public partial class ViewKunde : Form, IViewKunde
     {
-        public IControllerKunde Controller { private get; set; }
         public ViewKunde()
         {
             InitializeComponent();
         }
+
+        public IControllerKunde Controller { private get; set; }
 
 
         public int Kundennummer
@@ -69,6 +70,29 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             set => emailAdresseTextBox.Text = value;
         }
 
+
+        /// <summary>
+        ///     Aktualisiert den Namen in <see cref="Control.Name" /> und <see cref="kundenNameLabel" />
+        /// </summary>
+        /// <remarks>
+        ///     Diese Methode wird durch das setzen von <see cref="Vorname" /> oder <see cref="Nachname" /> aufgerufen
+        /// </remarks>
+        private void NameAktualisieren()
+        {
+            var result = string.IsNullOrWhiteSpace(Vorname) && string.IsNullOrWhiteSpace(Nachname)
+                ? "<kein name>"
+                : Vorname + " " + Nachname;
+            kundenNameLabel.Text = result;
+            Text = "Kunde - " + result;
+        }
+
+        #region Events
+
+        private void ViewKunde_Load(object sender, EventArgs e)
+        {
+            Controller.FormGeladen();
+        }
+
         private void applyButton_Click(object sender, EventArgs e)
         {
             try
@@ -102,19 +126,6 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             }
         }
 
-        private void ViewKunde_Load(object sender, EventArgs e)
-        {
-            Controller.FormGeladen();
-        }
-
-
-        private void NameAktualisieren()
-        {
-            var result = string.IsNullOrWhiteSpace(Vorname) && string.IsNullOrWhiteSpace(Nachname)
-                ? "<kein name>"
-                : Vorname + " " + Nachname;
-            kundenNameLabel.Text = result;
-            Text = "Kunde - " + result;
-        }
+        #endregion
     }
 }
