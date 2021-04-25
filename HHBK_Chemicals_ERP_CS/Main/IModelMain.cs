@@ -76,5 +76,38 @@ namespace HHBK_Chemicals_ERP_CS.Main
         void ProduktListeAktualisieren();
         
         #endregion
+        
+        #region Rezept
+
+        /// <summary>
+        ///     Öffnet eine <see cref="IViewRezept"/> mit den <see cref="Rezept"/>, der auf die Liste geklickt worden
+        ///     ist
+        /// </summary>
+        /// <param name="index">Index des geklickten Element auf der Liste</param>
+        void GeklicktenRezeptAnsehen(int index);
+
+        /// <summary>
+        ///     Öffnet eine <see cref="IViewRezept"/> mit der angegebene <see cref="Rezept.Artikelnummer"/>
+        /// </summary>
+        /// <param name="nummer">Die <see cref="Rezept.Artikelnummer"/></param>
+        void RezeptMitNummerÖffnen(int nummer);
+
+        /// <summary>
+        ///     Erstellt ein neues <see cref="Rezept"/> in der Datenbank und öffnet eine <see cref="IViewRezept"/>
+        /// </summary>
+        void NeuenRezeptErstellen();
+
+        /// <summary>
+        ///     Öffnet eine <see cref="IViewRezept"/> für den <paramref name="rezept"/>
+        /// </summary>
+        /// <param name="rezept">Der <see cref="Rezept"/> für den eine <see cref="IViewRezept"/> geöffnet werden soll.</param>
+        void RezeptAnsehen(Rezept rezept);
+        
+        /// <summary>
+        ///     Aktualisiert die Rezeptliste auf der <see cref="IViewRezept"/>
+        /// </summary>
+        void RezeptListeAktualisieren();
+        
+        #endregion
     }
 }

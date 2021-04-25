@@ -27,6 +27,12 @@ namespace HHBK_Chemicals_ERP_CS.Main
             produkteListBox.Items.AddRange(namen.Cast<object>().ToArray());
         }
 
+        public void RezeptListeAktualisieren(IEnumerable<string> namen)
+        {
+            rezeptListBox.Items.Clear();
+            rezeptListBox.Items.AddRange(namen.Cast<object>().ToArray());
+        }
+
         #region Events
 
         private void ViewMain_Load(object sender, EventArgs e)
@@ -83,7 +89,33 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             Controller.NeuenProduktErstellen();
         }
+
+        #endregion
+
+        #region Rezept
+
+        private void rezeptListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Controller.RezeptGeklickt(rezeptListBox.SelectedIndex);
+        }
+        private void rezeptListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Controller.ProduktGeklickt(rezeptListBox.SelectedIndex);
+        }
         
+        
+        private void rezeptNummerAufrufenButton_Click(object sender, EventArgs e)
+        {
+            Controller.RezeptMitNummerÖffnen((int) rezeptNummerAufrufenNumericUpDown.Value);
+        }
+
+
+        private void neuesRezeptButton_Click(object sender, EventArgs e)
+        {
+            Controller.NeuenRezeptErstellen();
+        }
+
         #endregion
 
         #endregion

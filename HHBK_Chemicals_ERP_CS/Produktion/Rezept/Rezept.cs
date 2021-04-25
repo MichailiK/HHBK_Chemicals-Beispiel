@@ -6,10 +6,10 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
     public class Rezept
     {
         /// <summary>
-        ///     Die einzigartige Rezeptnummer des <see cref="Rezept" />s
+        ///     Die einzigartige Rezept Nummer des <see cref="Rezept" />s
         /// </summary>
         /// <remarks>Dies ist der Primärschlüssel auf der Datenbank</remarks>
-        public readonly int Rezeptnummer;
+        public readonly int RezeptNummer;
 
         /// <summary>
         ///     Die Herstellungsdauer in Minuten
@@ -17,13 +17,14 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         public int HerstellungsdauerMin;
 
         /// <summary>
-        ///     Das <see cref="Produktion.Produkt" /> des <see cref="Rezept" />s
+        ///     Das <see cref="Produkt" /> des <see cref="Rezept" />s
         /// </summary>
+        /// <remarks>Dies kann <c>null</c> sein</remarks>
         public Produkt Produkt;
 
-        public Rezept(int rezeptnummer, int herstellungsdauerMin, Produkt produkt)
+        public Rezept(int rezeptNummer, int herstellungsdauerMin, Produkt produkt)
         {
-            Rezeptnummer = rezeptnummer;
+            RezeptNummer = rezeptNummer;
             HerstellungsdauerMin = herstellungsdauerMin;
             Produkt = produkt;
         }

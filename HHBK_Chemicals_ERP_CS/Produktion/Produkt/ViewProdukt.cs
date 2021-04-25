@@ -51,7 +51,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
 
 
         /// <summary>
-        ///     Aktualisiert den Namen in <see cref="Control.Name" /> und <see cref="produktNamenLabel" />
+        ///     Aktualisiert den Namen in <see cref="Control.Text" /> und <see cref="produktNamenLabel" />
         /// </summary>
         /// <remarks>
         ///     Diese Methode wird durch das setzen von <see cref="ProduktName" /> aufgerufen

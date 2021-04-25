@@ -1,4 +1,5 @@
 using HHBK_Chemicals_ERP_CS.Kunden;
+using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main
 {
@@ -49,7 +50,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         /// <summary>
         ///     Wird aufgerufen, wenn ein Artikelnummer angegeben worden ist, die eingesehen werden soll
         /// </summary>
-        /// <param name="nummer">Die <see cref="Produkt.Produktnnummer"/></param>
+        /// <param name="nummer">Die <see cref="Produkt.RezeptNummer"/></param>
         void ProduktMitNummerÖffnen(int nummer);
         
         /// <summary>
@@ -57,6 +58,28 @@ namespace HHBK_Chemicals_ERP_CS.Main
         ///     eingesehen werden soll.
         /// </summary>
         void NeuenProduktErstellen();
+        
+        #endregion
+        
+        #region Rezept
+        
+        /// <summary>
+        ///     Wird aufgerufen, wenn auf ein Rezept in der Rezeptliste doppelgeklickt wird oder Enter gedrückt wird
+        /// </summary>
+        /// <param name="index">Der ausgewählte index auf der Rezeptliste</param>
+        void RezeptGeklickt(int index);
+        
+        /// <summary>
+        ///     Wird aufgerufen, wenn ein Artikelnummer angegeben worden ist, die eingesehen werden soll
+        /// </summary>
+        /// <param name="nummer">Die <see cref="Rezept.RezeptNummer"/></param>
+        void RezeptMitNummerÖffnen(int nummer);
+        
+        /// <summary>
+        ///     Wird aufgerufen, wenn ein neuen <see cref="Rezept"/> erstellt werden soll & der neu erstellte Rezept
+        ///     eingesehen werden soll.
+        /// </summary>
+        void NeuenRezeptErstellen();
         
         #endregion
     }

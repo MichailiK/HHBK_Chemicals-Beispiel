@@ -72,7 +72,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
 
 
         /// <summary>
-        ///     Aktualisiert den Namen in <see cref="Control.Name" /> und <see cref="kundenNameLabel" />
+        ///     Aktualisiert den Namen in <see cref="Control.Text" /> und <see cref="kundenNameLabel" />
         /// </summary>
         /// <remarks>
         ///     Diese Methode wird durch das setzen von <see cref="Vorname" /> oder <see cref="Nachname" /> aufgerufen

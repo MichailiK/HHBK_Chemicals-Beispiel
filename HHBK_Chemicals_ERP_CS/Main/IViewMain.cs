@@ -14,5 +14,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         void KundenListeAktualisieren(IEnumerable<string> namen);
         
         void ProduktListeAktualisieren(IEnumerable<string> namen);
+
+        void RezeptListeAktualisieren(IEnumerable<string> namen);
     }
 }

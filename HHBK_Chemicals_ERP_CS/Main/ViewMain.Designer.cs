@@ -31,6 +31,7 @@
         {
             System.Windows.Forms.Label d_kundenAufrufenLabel;
             System.Windows.Forms.Label d_produktAufrufenLabel;
+            System.Windows.Forms.Label d_rezeptAufrufenLabel;
             this.kundeGroupBox = new System.Windows.Forms.GroupBox();
             this.neuenKundeButton = new System.Windows.Forms.Button();
             this.kundeNummerAufrufenButton = new System.Windows.Forms.Button();
@@ -41,12 +42,20 @@
             this.produktNummerAufrufenButton = new System.Windows.Forms.Button();
             this.produktNummerAufrufenNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.produkteListBox = new System.Windows.Forms.ListBox();
+            this.rezeptGroupBox = new System.Windows.Forms.GroupBox();
+            this.neuesRezeptButton = new System.Windows.Forms.Button();
+            this.rezeptNummerAufrufenButton = new System.Windows.Forms.Button();
+            this.rezeptNummerAufrufenNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.rezeptListBox = new System.Windows.Forms.ListBox();
             d_kundenAufrufenLabel = new System.Windows.Forms.Label();
             d_produktAufrufenLabel = new System.Windows.Forms.Label();
+            d_rezeptAufrufenLabel = new System.Windows.Forms.Label();
             this.kundeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.kundenNummerAufrufenNumericUpDown)).BeginInit();
             this.produkteGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.produktNummerAufrufenNumericUpDown)).BeginInit();
+            this.rezeptGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.rezeptNummerAufrufenNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // d_kundenAufrufenLabel
@@ -64,6 +73,14 @@
             d_produktAufrufenLabel.Size = new System.Drawing.Size(188, 21);
             d_produktAufrufenLabel.TabIndex = 8;
             d_produktAufrufenLabel.Text = "Produktnummer aufrufen";
+            // 
+            // d_rezeptAufrufenLabel
+            // 
+            d_rezeptAufrufenLabel.Location = new System.Drawing.Point(6, 512);
+            d_rezeptAufrufenLabel.Name = "d_rezeptAufrufenLabel";
+            d_rezeptAufrufenLabel.Size = new System.Drawing.Size(188, 21);
+            d_rezeptAufrufenLabel.TabIndex = 8;
+            d_rezeptAufrufenLabel.Text = "Produktnummer aufrufen";
             // 
             // kundeGroupBox
             // 
@@ -93,7 +110,7 @@
             // 
             this.kundeNummerAufrufenButton.Location = new System.Drawing.Point(132, 536);
             this.kundeNummerAufrufenButton.Name = "kundeNummerAufrufenButton";
-            this.kundeNummerAufrufenButton.Size = new System.Drawing.Size(62, 23);
+            this.kundeNummerAufrufenButton.Size = new System.Drawing.Size(62, 20);
             this.kundeNummerAufrufenButton.TabIndex = 4;
             this.kundeNummerAufrufenButton.Text = "Los";
             this.kundeNummerAufrufenButton.UseVisualStyleBackColor = true;
@@ -145,7 +162,7 @@
             // 
             this.produktNummerAufrufenButton.Location = new System.Drawing.Point(132, 536);
             this.produktNummerAufrufenButton.Name = "produktNummerAufrufenButton";
-            this.produktNummerAufrufenButton.Size = new System.Drawing.Size(62, 23);
+            this.produktNummerAufrufenButton.Size = new System.Drawing.Size(62, 20);
             this.produktNummerAufrufenButton.TabIndex = 10;
             this.produktNummerAufrufenButton.Text = "Los";
             this.produktNummerAufrufenButton.UseVisualStyleBackColor = true;
@@ -169,11 +186,64 @@
             this.produkteListBox.DoubleClick += new System.EventHandler(this.produktListBox_DoubleClick);
             this.produkteListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.produktListBox_KeyUp);
             // 
+            // rezeptGroupBox
+            // 
+            this.rezeptGroupBox.Controls.Add(this.neuesRezeptButton);
+            this.rezeptGroupBox.Controls.Add(this.rezeptNummerAufrufenButton);
+            this.rezeptGroupBox.Controls.Add(d_rezeptAufrufenLabel);
+            this.rezeptGroupBox.Controls.Add(this.rezeptNummerAufrufenNumericUpDown);
+            this.rezeptGroupBox.Controls.Add(this.rezeptListBox);
+            this.rezeptGroupBox.Location = new System.Drawing.Point(424, 12);
+            this.rezeptGroupBox.Name = "rezeptGroupBox";
+            this.rezeptGroupBox.Size = new System.Drawing.Size(200, 570);
+            this.rezeptGroupBox.TabIndex = 11;
+            this.rezeptGroupBox.TabStop = false;
+            this.rezeptGroupBox.Text = "Rezept";
+            // 
+            // neuesRezeptButton
+            // 
+            this.neuesRezeptButton.Location = new System.Drawing.Point(6, 471);
+            this.neuesRezeptButton.Name = "neuesRezeptButton";
+            this.neuesRezeptButton.Size = new System.Drawing.Size(188, 23);
+            this.neuesRezeptButton.TabIndex = 7;
+            this.neuesRezeptButton.Text = "Neu ...";
+            this.neuesRezeptButton.UseVisualStyleBackColor = true;
+            this.neuesRezeptButton.Click += new System.EventHandler(this.neuesRezeptButton_Click);
+            // 
+            // rezeptNummerAufrufenButton
+            // 
+            this.rezeptNummerAufrufenButton.Location = new System.Drawing.Point(132, 536);
+            this.rezeptNummerAufrufenButton.Name = "rezeptNummerAufrufenButton";
+            this.rezeptNummerAufrufenButton.Size = new System.Drawing.Size(62, 20);
+            this.rezeptNummerAufrufenButton.TabIndex = 10;
+            this.rezeptNummerAufrufenButton.Text = "Los";
+            this.rezeptNummerAufrufenButton.UseVisualStyleBackColor = true;
+            this.rezeptNummerAufrufenButton.Click += new System.EventHandler(this.rezeptNummerAufrufenButton_Click);
+            // 
+            // rezeptNummerAufrufenNumericUpDown
+            // 
+            this.rezeptNummerAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 536);
+            this.rezeptNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.rezeptNummerAufrufenNumericUpDown.Name = "rezeptNummerAufrufenNumericUpDown";
+            this.rezeptNummerAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.rezeptNummerAufrufenNumericUpDown.TabIndex = 9;
+            // 
+            // rezeptListBox
+            // 
+            this.rezeptListBox.FormattingEnabled = true;
+            this.rezeptListBox.Location = new System.Drawing.Point(6, 19);
+            this.rezeptListBox.Name = "rezeptListBox";
+            this.rezeptListBox.Size = new System.Drawing.Size(188, 446);
+            this.rezeptListBox.TabIndex = 6;
+            this.rezeptListBox.DoubleClick += new System.EventHandler(this.rezeptListBox_DoubleClick);
+            this.rezeptListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.rezeptListBox_KeyUp);
+            // 
             // ViewMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 594);
+            this.Controls.Add(this.rezeptGroupBox);
             this.Controls.Add(this.produkteGroupBox);
             this.Controls.Add(this.kundeGroupBox);
             this.Name = "ViewMain";
@@ -183,8 +253,16 @@
             ((System.ComponentModel.ISupportInitialize) (this.kundenNummerAufrufenNumericUpDown)).EndInit();
             this.produkteGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.produktNummerAufrufenNumericUpDown)).EndInit();
+            this.rezeptGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.rezeptNummerAufrufenNumericUpDown)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.GroupBox rezeptGroupBox;
+        private System.Windows.Forms.Button neuesRezeptButton;
+        private System.Windows.Forms.Button rezeptNummerAufrufenButton;
+        private System.Windows.Forms.NumericUpDown rezeptNummerAufrufenNumericUpDown;
+        private System.Windows.Forms.ListBox rezeptListBox;
 
         private System.Windows.Forms.GroupBox produkteGroupBox;
         private System.Windows.Forms.Button neuesProduktButton;

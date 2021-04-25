@@ -107,5 +107,52 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         void UpdateProdukt(Produkt produkt);
         
         #endregion
+        
+        #region Rezept
+        
+        /// <summary>
+        ///     Holt eine <see cref="IEnumerable{T}"/> von <see cref="Rezept"/>en aus der <see cref="IDatenbank"/>
+        /// </summary>
+        /// <returns>Einen <see cref="IEnumerable{T}" /> von Rezepten</returns>
+        IEnumerable<Rezept> GetRezepte();
+
+        /// <summary>
+        ///     Holt einen spezifischen <see cref="Rezept"/> aus der <see cref="IDatenbank"/> mit der
+        ///     <see cref="Rezept.RezeptNummer" />
+        /// </summary>
+        /// <param name="artikelnummer">Die <see cref="Rezept.RezeptNummer" /> des <see cref="Rezept" />en</param>
+        /// <returns>
+        ///     Ein <see cref="Rezept" /> mit dieser <see cref="Rezept.RezeptNummer" />, oder <c>null</c> falls solch
+        ///     ein Rezept nicht existiert
+        /// </returns>
+        Rezept GetRezept(int artikelnummer);
+
+        /// <summary>
+        ///     Löscht ein <see cref="Rezept"/> aus der <see cref="IDatenbank"/>
+        /// </summary>
+        /// <param name="rezept">Das Rezept, der gelöscht werden soll</param>
+        /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
+        bool DeleteRezept(Rezept rezept);
+
+        /// <summary>
+        ///     Löscht ein <see cref="Rezept"/> aus der <see cref="IDatenbank"/>
+        /// </summary>
+        /// <param name="artikelnummer">Die <see cref="Rezept.RezeptNummer"/> des <see cref="Rezept"/></param>
+        /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
+        bool DeleteRezept(int artikelnummer);
+
+        /// <summary>
+        ///     Erstellt ein neues <see cref="Rezept"/> auf der <see cref="IDatenbank"/> und gibt diese zurück.
+        /// </summary>
+        /// <returns>Das neu erstellte <see cref="Rezept"/></returns>
+        Rezept CreateRezept();
+
+        /// <summary>
+        ///     Aktualisiert ein <see cref="Rezept"/> mit den neuen Daten auf der <see cref="IDatenbank"/>
+        /// </summary>
+        /// <param name="rezept">Das <see cref="Rezept"/> der aktualisiert werden soll</param>
+        void UpdateRezept(Rezept rezept);
+        
+        #endregion
     }
 }

@@ -10,6 +10,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             ModelMain.KundenListeAktualisieren();
             ModelMain.ProduktListeAktualisieren();
+            ModelMain.RezeptListeAktualisieren();
         }
 
         #region Kunde
@@ -48,6 +49,26 @@ namespace HHBK_Chemicals_ERP_CS.Main
         public void NeuenProduktErstellen()
         {
             ModelMain.NeuenProduktErstellen();
+        }
+        
+        #endregion
+        
+        #region Rezept
+
+        public void RezeptGeklickt(int index)
+        {
+            if (index != -1)
+                ModelMain.GeklicktenRezeptAnsehen(index);
+        }
+
+        public void RezeptMitNummerÖffnen(int nummer)
+        {
+            ModelMain.RezeptMitNummerÖffnen(nummer);
+        }
+
+        public void NeuenRezeptErstellen()
+        {
+            ModelMain.NeuenRezeptErstellen();
         }
         
         #endregion

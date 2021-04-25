@@ -10,10 +10,14 @@ namespace HHBK_Chemicals_ERP_CS.Main
     /// <inheritdoc cref="IModelMain"/>
     public class ModelMain : IModelMain
     {
+        private const int MaxPreviewEntries = 250;
+    
         private readonly IDatenbank _datenbank;
 
         private List<Kunde> _kundenListe;
         private List<Produkt> _produktListe;
+        private List<Rezept> _rezeptListe;
+
 
 
         public ModelMain(IDatenbank datenbank)
@@ -63,7 +67,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
 
         public void KundenListeAktualisieren()
         {
-            _kundenListe = _datenbank.GetKunden().Take(250).ToList();
+            _kundenListe = _datenbank.GetKunden().Take(MaxPreviewEntries).ToList();
             ViewMain.KundenListeAktualisieren(
                 _kundenListe.Select(
                     kunde => kunde.Kundennummer + ": " +
@@ -114,12 +118,63 @@ namespace HHBK_Chemicals_ERP_CS.Main
 
         public void ProduktListeAktualisieren()
         {
-            _produktListe = _datenbank.GetProdukte().Take(250).ToList();
+            _produktListe = _datenbank.GetProdukte().Take(MaxPreviewEntries).ToList();
             ViewMain.ProduktListeAktualisieren(
                 _produktListe.Select(
                     produkt => produkt.Artikelnummer + ": " +
                                (string.IsNullOrWhiteSpace(produkt.Name) ? "<kein name>" : produkt.Name)
                                + " (" + produkt.Verkaufseinheit + produkt.Einheit + ", " + produkt.PreisVk + " €)"));
+        }
+        
+        #endregion
+        
+        #region Rezept
+        
+        public void GeklicktenRezeptAnsehen(int index)
+        {
+            RezeptAnsehen(_rezeptListe[index]);
+        }
+
+        public void RezeptMitNummerÖffnen(int nummer)
+        {
+            var rezept = _datenbank.GetRezept(nummer);
+            if (rezept == null)
+                MessageBox.Show("Das Rezept konnte nicht gefunden werden", "Rezept nicht gefunden", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+                RezeptAnsehen(rezept);
+        }
+
+        public void NeuenRezeptErstellen()
+        {
+            RezeptAnsehen(_datenbank.CreateRezept());
+        }
+
+
+        public void RezeptAnsehen(Rezept rezept)
+        {
+            var viewRezept = new ViewRezept();
+            var modelRezept = new ModelRezept(_datenbank, rezept);
+            var controllerRezept = new ControllerRezept(modelRezept);
+
+            viewRezept.Controller = controllerRezept;
+            controllerRezept.ModelRezept = modelRezept;
+            modelRezept.ViewRezept = viewRezept;
+
+            viewRezept.ShowDialog();
+
+            RezeptListeAktualisieren();
+        }
+
+        public void RezeptListeAktualisieren()
+        {
+            _rezeptListe = _datenbank.GetRezepte().Take(MaxPreviewEntries).ToList();
+            ViewMain.RezeptListeAktualisieren(
+                _rezeptListe.Select(
+                    rezept => rezept.RezeptNummer + ": Rezept für " +
+                              (rezept.Produkt == null
+                                  ? "unbekanntes Artikel"
+                                  : "Artikel " + rezept.Produkt.Artikelnummer)));
         }
         
         #endregion

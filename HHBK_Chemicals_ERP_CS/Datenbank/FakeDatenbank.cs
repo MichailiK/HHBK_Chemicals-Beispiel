@@ -32,6 +32,17 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         ///     als eine einzigartige <see cref="Produkt.Artikelnummer" /> verwendet wird
         /// </summary>
         private int _produkteAutoIncrementCount;
+        
+        /// <summary>
+        ///     Eine "Tabelle" für Rezepte
+        /// </summary>
+        private readonly Dictionary<int, Rezept> _rezepte;
+
+        /// <summary>
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Rezept" />e erhöht wird und
+        ///     als eine einzigartige <see cref="Rezept.Artikelnummer" /> verwendet wird
+        /// </summary>
+        private int _rezepteAutoIncrementCount;
 
 
 
@@ -52,9 +63,17 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
             {
                 {1, new Produkt(1, "Ein Produkt! Wow!", 20, "g", 19.99m)},
                 {2, new Produkt(2, "So ein Chemical", 50, "g", 49.99m)},
-                {3, new Produkt(2, "Budget Chemical", 10, "g", 9.99m)}
+                {3, new Produkt(3, "Budget Chemical", 10, "g", 9.99m)}
             };
             _produkteAutoIncrementCount = _produkte.Count;
+            
+            _rezepte = new Dictionary<int, Rezept>
+            {
+                {1, new Rezept(1, 3, _produkte[1])},
+                {2, new Rezept(2, 4, _produkte[1])},
+                {3, new Rezept(3, 5, _produkte[2])}
+            };
+            _rezepteAutoIncrementCount = _rezepte.Count;
         }
 
         #region Kunde
@@ -143,6 +162,51 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
                 _produkte.Remove(produkt.Artikelnummer);
 
             _produkte.Add(produkt.Artikelnummer, produkt);
+        }
+        
+        #endregion
+        
+        #region Rezept
+
+        public IEnumerable<Rezept> GetRezepte()
+        {
+            return _rezepte.Values;
+        }
+
+        public Rezept GetRezept(int artikelnummer)
+        {
+            return _rezepte.TryGetValue(artikelnummer, out var rezept) ? rezept : null;
+        }
+
+        public bool DeleteRezept(Rezept rezept)
+        {
+            return DeleteRezept(rezept.RezeptNummer);
+        }
+
+        public bool DeleteRezept(int artikelnummer)
+        {
+            return _rezepte.Remove(artikelnummer);
+        }
+
+        public Rezept CreateRezept()
+        {
+            var rezept = new Rezept(++_rezepteAutoIncrementCount, 0, null);
+            AddOrUpdateRezept(rezept);
+            return rezept;
+        }
+
+        public void UpdateRezept(Rezept rezept)
+        {
+            AddOrUpdateRezept(rezept);
+        }
+
+
+        private void AddOrUpdateRezept(Rezept rezept)
+        {
+            if (_rezepte.ContainsKey(rezept.RezeptNummer))
+                _rezepte.Remove(rezept.RezeptNummer);
+
+            _rezepte.Add(rezept.RezeptNummer, rezept);
         }
         
         #endregion
