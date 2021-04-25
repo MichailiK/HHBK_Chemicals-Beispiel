@@ -85,7 +85,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             var produkt = _datenbank.GetProdukt(nummer);
             if (produkt == null)
-                MessageBox.Show("Der Produkt konnte nicht gefunden werden", "Produkt nicht gefunden", MessageBoxButtons.OK,
+                MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             else
                 ProduktAnsehen(produkt);
