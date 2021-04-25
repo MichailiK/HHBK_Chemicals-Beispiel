@@ -45,9 +45,9 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             d_herstellungsdauerLabel = new System.Windows.Forms.Label();
             d_artikelNummerLabel = new System.Windows.Forms.Label();
             d_rezeptNummerLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize) (this.rezeptNummerNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.verkaufseinheitNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.artikelNummerNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rezeptNummerNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.verkaufseinheitNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.artikelNummerNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // d_herstellungsdauerLabel
@@ -55,7 +55,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             d_herstellungsdauerLabel.Location = new System.Drawing.Point(8, 54);
             d_herstellungsdauerLabel.Name = "d_herstellungsdauerLabel";
             d_herstellungsdauerLabel.Size = new System.Drawing.Size(100, 20);
-            d_herstellungsdauerLabel.TabIndex = 9;
+            d_herstellungsdauerLabel.TabIndex = 3;
             d_herstellungsdauerLabel.Text = "Herstellungsdauer";
             // 
             // d_artikelNummerLabel
@@ -63,7 +63,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             d_artikelNummerLabel.Location = new System.Drawing.Point(8, 74);
             d_artikelNummerLabel.Name = "d_artikelNummerLabel";
             d_artikelNummerLabel.Size = new System.Drawing.Size(100, 20);
-            d_artikelNummerLabel.TabIndex = 11;
+            d_artikelNummerLabel.TabIndex = 6;
             d_artikelNummerLabel.Text = "Artikelnummer";
             // 
             // d_rezeptNummerLabel
@@ -76,7 +76,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             // 
             // rezeptNamenLabel
             // 
-            this.rezeptNamenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.rezeptNamenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rezeptNamenLabel.Location = new System.Drawing.Point(0, 0);
             this.rezeptNamenLabel.Margin = new System.Windows.Forms.Padding(0);
             this.rezeptNamenLabel.Name = "rezeptNamenLabel";
@@ -91,7 +91,11 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.rezeptNummerNumericUpDown.Enabled = false;
             this.rezeptNummerNumericUpDown.Location = new System.Drawing.Point(132, 30);
             this.rezeptNummerNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.rezeptNummerNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.rezeptNummerNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.rezeptNummerNumericUpDown.Name = "rezeptNummerNumericUpDown";
             this.rezeptNummerNumericUpDown.ReadOnly = true;
             this.rezeptNummerNumericUpDown.Size = new System.Drawing.Size(164, 20);
@@ -101,26 +105,34 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             // 
             this.verkaufseinheitNumericUpDown.Location = new System.Drawing.Point(132, 52);
             this.verkaufseinheitNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.verkaufseinheitNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.verkaufseinheitNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.verkaufseinheitNumericUpDown.Name = "verkaufseinheitNumericUpDown";
             this.verkaufseinheitNumericUpDown.Size = new System.Drawing.Size(116, 20);
-            this.verkaufseinheitNumericUpDown.TabIndex = 10;
+            this.verkaufseinheitNumericUpDown.TabIndex = 4;
             // 
             // artikelNummerNumericUpDown
             // 
             this.artikelNummerNumericUpDown.Location = new System.Drawing.Point(132, 74);
             this.artikelNummerNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.artikelNummerNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.artikelNummerNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.artikelNummerNumericUpDown.Name = "artikelNummerNumericUpDown";
             this.artikelNummerNumericUpDown.Size = new System.Drawing.Size(164, 20);
-            this.artikelNummerNumericUpDown.TabIndex = 12;
+            this.artikelNummerNumericUpDown.TabIndex = 7;
             // 
             // applyButton
             // 
             this.applyButton.Location = new System.Drawing.Point(155, 106);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(141, 23);
-            this.applyButton.TabIndex = 18;
+            this.applyButton.TabIndex = 9;
             this.applyButton.Text = "OK";
             this.applyButton.UseVisualStyleBackColor = true;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
@@ -131,7 +143,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.cancelButton.Location = new System.Drawing.Point(8, 106);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(141, 23);
-            this.cancelButton.TabIndex = 17;
+            this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Abbrechen";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -141,7 +153,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.deleteButton.Location = new System.Drawing.Point(8, 135);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(288, 23);
-            this.deleteButton.TabIndex = 19;
+            this.deleteButton.TabIndex = 10;
             this.deleteButton.Text = "Rezept Löschen";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -151,7 +163,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.d_minutenLabel.Location = new System.Drawing.Point(251, 51);
             this.d_minutenLabel.Name = "d_minutenLabel";
             this.d_minutenLabel.Size = new System.Drawing.Size(45, 23);
-            this.d_minutenLabel.TabIndex = 20;
+            this.d_minutenLabel.TabIndex = 5;
             this.d_minutenLabel.Text = "Minuten";
             this.d_minutenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -178,10 +190,11 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rezept - Rezeptnname";
             this.Load += new System.EventHandler(this.ViewRezept_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.rezeptNummerNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.verkaufseinheitNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.artikelNummerNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rezeptNummerNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.verkaufseinheitNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.artikelNummerNumericUpDown)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Label d_minutenLabel;

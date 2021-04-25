@@ -16,7 +16,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager
         public readonly int Bestellpositionsnummer;
 
         /// <summary>
-        ///     Das <see cref="Produktion.Produkt" /> der <see cref="Bestellposition" />.
+        ///     Das <see cref="Produktion.Produkt" /> der <see cref="Bestellposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Produkt_Artikelnummer1", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Produkt" />
@@ -28,7 +28,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager
             int menge,
             DateTimeOffset bestelldatum,
             Kunde kunde,
-            Lieferposition lieferposition)
+            Lieferposition.Lieferposition lieferposition)
         {
             Bestellpositionsnummer = bestellpositionsnummer;
             Produkt = produkt;
@@ -46,17 +46,17 @@ namespace HHBK_Chemicals_ERP_CS.Lager
         public DateTimeOffset Bestelldatum { get; set; }
 
         /// <summary>
-        ///     Der <see cref="Kunden.Kunde" /> der <see cref="Bestellposition" />.
+        ///     Der <see cref="Kunden.Kunde" /> der <see cref="Bestellposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Kunde_Kundennummer", auf der Datenbank</remarks>
         /// <seealso cref="Kunden.Kunde" />
         public Kunde Kunde { get; set; }
 
         /// <summary>
-        ///     Der <see cref="Lager.Lieferposition" /> der <see cref="Bestellposition" />.
+        ///     Der <see cref="Lager.Lieferposition.Lieferposition" /> der <see cref="Bestellposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Lieferposition_idLieferposition", auf der Datenbank</remarks>
-        /// <seealso cref="Lager.Lieferposition" />
-        public Lieferposition Lieferposition { get; set; }
+        /// <seealso cref="Lager.Lieferposition.Lieferposition" />
+        public Lieferposition.Lieferposition Lieferposition { get; set; }
     }
 }

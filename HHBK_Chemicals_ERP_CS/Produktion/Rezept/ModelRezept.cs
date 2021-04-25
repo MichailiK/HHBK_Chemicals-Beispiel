@@ -20,11 +20,11 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         public void RezeptAktualisieren()
         {
             var produkt = _datenbank.GetProdukt(ViewRezept.ArtikelNummer);
-            if(produkt == null)
+            if (produkt == null)
                 throw new ArgumentException("Das Produkt mit der Artikelnummer " +
                                             ViewRezept.ArtikelNummer +
                                             " konnte nicht gefunden werden");
-            
+
             _rezept.HerstellungsdauerMin = ViewRezept.HerstellungsdauerMin;
             _rezept.Produkt = produkt;
 

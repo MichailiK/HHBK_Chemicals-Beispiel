@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using HHBK_Chemicals_ERP_CS.Kunden;
+using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Datenbank
@@ -15,35 +17,47 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         /// </summary>
         private readonly Dictionary<int, Kunde> _kunden;
 
-        /// <summary>
-        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Kunde" />ns erhöht wird und
-        ///     als eine einzigartige <see cref="Kunde.Kundennummer" /> verwendet wird
-        /// </summary>
-        private int _kundenAutoIncrementCount;
 
-        
+        /// <summary>
+        ///     Eine "Tabelle" für Lieferpositionen
+        /// </summary>
+        private readonly Dictionary<int, Lieferposition> _lieferpositionen;
+
+
         /// <summary>
         ///     Eine "Tabelle" für Produkte
         /// </summary>
         private readonly Dictionary<int, Produkt> _produkte;
 
-        /// <summary>
-        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Produkt" />e erhöht wird und
-        ///     als eine einzigartige <see cref="Produkt.Artikelnummer" /> verwendet wird
-        /// </summary>
-        private int _produkteAutoIncrementCount;
-        
+
         /// <summary>
         ///     Eine "Tabelle" für Rezepte
         /// </summary>
         private readonly Dictionary<int, Rezept> _rezepte;
 
         /// <summary>
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Kunde" />ns erhöht wird und
+        ///     als eine einzigartige <see cref="Kunde.Kundennummer" /> verwendet wird
+        /// </summary>
+        private int _kundenAutoIncrementCount;
+
+        /// <summary>
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Lieferposition" />en erhöht wird und
+        ///     als eine einzigartige <see cref="Lieferposition.Id" /> verwendet wird
+        /// </summary>
+        private int _lieferPositionenAutoIncrementCount;
+
+        /// <summary>
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Produkt" />e erhöht wird und
+        ///     als eine einzigartige <see cref="Produkt.Artikelnummer" /> verwendet wird
+        /// </summary>
+        private int _produkteAutoIncrementCount;
+
+        /// <summary>
         ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Rezept" />e erhöht wird und
-        ///     als eine einzigartige <see cref="Rezept.Artikelnummer" /> verwendet wird
+        ///     als eine einzigartige <see cref="Rezept.RezeptNummer" /> verwendet wird
         /// </summary>
         private int _rezepteAutoIncrementCount;
-
 
 
         /// <summary>
@@ -66,7 +80,7 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
                 {3, new Produkt(3, "Budget Chemical", 10, "g", 9.99m)}
             };
             _produkteAutoIncrementCount = _produkte.Count;
-            
+
             _rezepte = new Dictionary<int, Rezept>
             {
                 {1, new Rezept(1, 3, _produkte[1])},
@@ -74,6 +88,26 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
                 {3, new Rezept(3, 5, _produkte[2])}
             };
             _rezepteAutoIncrementCount = _rezepte.Count;
+
+            _lieferpositionen = new Dictionary<int, Lieferposition>
+            {
+                {
+                    1,
+                    new Lieferposition(1, "123", DateTimeOffset.Now.AddDays(-1), DateTimeOffset.Now.AddHours(-1),
+                        "Eine Kontrolle", "Eine Spedition")
+                },
+                {
+                    2,
+                    new Lieferposition(2, "456", DateTimeOffset.Now.AddDays(-4), DateTimeOffset.Now.AddHours(-4),
+                        "Eine langsame Kontrolle", "Eine langsame Spedition")
+                },
+                {
+                    3,
+                    new Lieferposition(3, "789", DateTimeOffset.Now.AddDays(-1), DateTimeOffset.Now.AddHours(-16),
+                        "Hi-Speed(tm) Kontrolle", "Hi-Speed(tm) Spedition")
+                }
+            };
+            _lieferPositionenAutoIncrementCount = _lieferpositionen.Count;
         }
 
         #region Kunde
@@ -163,9 +197,9 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
 
             _produkte.Add(produkt.Artikelnummer, produkt);
         }
-        
+
         #endregion
-        
+
         #region Rezept
 
         public IEnumerable<Rezept> GetRezepte()
@@ -208,7 +242,53 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
 
             _rezepte.Add(rezept.RezeptNummer, rezept);
         }
-        
+
+        #endregion
+
+        #region Lieferposition
+
+        public IEnumerable<Lieferposition> GetLieferpositionen()
+        {
+            return _lieferpositionen.Values;
+        }
+
+        public Lieferposition GetLieferposition(int artikelnummer)
+        {
+            return _lieferpositionen.TryGetValue(artikelnummer, out var lieferposition) ? lieferposition : null;
+        }
+
+        public bool DeleteLieferposition(Lieferposition lieferposition)
+        {
+            return DeleteLieferposition(lieferposition.Id);
+        }
+
+        public bool DeleteLieferposition(int artikelnummer)
+        {
+            return _lieferpositionen.Remove(artikelnummer);
+        }
+
+        public Lieferposition CreateLieferposition()
+        {
+            var lieferposition = new Lieferposition(++_lieferPositionenAutoIncrementCount, "", DateTimeOffset.Now, null,
+                "", "");
+            AddOrUpdateLieferposition(lieferposition);
+            return lieferposition;
+        }
+
+        public void UpdateLieferposition(Lieferposition lieferposition)
+        {
+            AddOrUpdateLieferposition(lieferposition);
+        }
+
+
+        private void AddOrUpdateLieferposition(Lieferposition lieferposition)
+        {
+            if (_lieferpositionen.ContainsKey(lieferposition.Id))
+                _lieferpositionen.Remove(lieferposition.Id);
+
+            _lieferpositionen.Add(lieferposition.Id, lieferposition);
+        }
+
         #endregion
     }
 }

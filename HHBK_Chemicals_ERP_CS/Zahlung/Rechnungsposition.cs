@@ -26,21 +26,21 @@ namespace HHBK_Chemicals_ERP_CS.Zahlung
         public int Rechnungsnummer { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Lager.Bestellposition" /> der <see cref="Rechnungsposition" />.
+        ///     Die <see cref="Lager.Bestellposition" /> der <see cref="Rechnungsposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Bestellpositionsnummer", auf der Datenbank</remarks>
         /// <seealso cref="Lager.Bestellposition" />
         public Bestellposition Bestellposition { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Produktion.Produkt" /> der <see cref="Rechnungsposition" />.
+        ///     Die <see cref="Produktion.Produkt" /> der <see cref="Rechnungsposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Produkt_Artikelnummer1", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Produkt" />
         public Produkt Produkt { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Kunden.Kunde" /> der <see cref="Rechnungsposition" />.
+        ///     Die <see cref="Kunden.Kunde" /> der <see cref="Rechnungsposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Kunde_Kundennummer", auf der Datenbank</remarks>
         /// <seealso cref="Kunden.Kunde" />

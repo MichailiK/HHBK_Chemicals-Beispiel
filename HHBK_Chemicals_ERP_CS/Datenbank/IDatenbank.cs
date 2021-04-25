@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HHBK_Chemicals_ERP_CS.Kunden;
+using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Datenbank
@@ -7,20 +8,19 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
     /// <summary>
     ///     Eine Datenbank für das Speichern & Abrufen von relevanten Daten
     /// </summary>
-    /// <seealso cref="FakeDatenbank"/>
+    /// <seealso cref="FakeDatenbank" />
     public interface IDatenbank
     {
-    
         #region Kunde
-    
+
         /// <summary>
-        ///     Holt eine <see cref="IEnumerable{T}"/> von <see cref="Kunde"/>n aus der <see cref="IDatenbank"/>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Kunde" />n aus der <see cref="IDatenbank" />
         /// </summary>
         /// <returns>Einen <see cref="IEnumerable{T}" /> von Kunden</returns>
         IEnumerable<Kunde> GetKunden();
 
         /// <summary>
-        ///     Holt einen spezifischen <see cref="Kunde"/> aus der <see cref="IDatenbank"/> mit der
+        ///     Holt einen spezifischen <see cref="Kunde" /> aus der <see cref="IDatenbank" /> mit der
         ///     <see cref="Kunde.Kundennummer" />
         /// </summary>
         /// <param name="kundennummer">Die <see cref="Kunde.Kundennummer" /> des <see cref="Kunde" />n</param>
@@ -31,48 +31,48 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         Kunde GetKunde(int kundennummer);
 
         /// <summary>
-        ///     Löscht ein <see cref="Kunde"/> aus der <see cref="IDatenbank"/>
+        ///     Löscht ein <see cref="Kunde" /> aus der <see cref="IDatenbank" />
         /// </summary>
         /// <param name="kunde">Der Kunde, der gelöscht werden soll</param>
         /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
         bool DeleteKunde(Kunde kunde);
 
         /// <summary>
-        ///     Löscht ein <see cref="Kunde"/> aus der <see cref="IDatenbank"/>
+        ///     Löscht ein <see cref="Kunde" /> aus der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="kundennummer">Die <see cref="Kunde.Kundennummer"/> des <see cref="Kunde"/></param>
+        /// <param name="kundennummer">Die <see cref="Kunde.Kundennummer" /> des <see cref="Kunde" /></param>
         /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
         bool DeleteKunde(int kundennummer);
 
         /// <summary>
-        ///     Erstellt einen neuen <see cref="Kunde"/> auf der <see cref="IDatenbank"/> und gibt diese zurück.
+        ///     Erstellt einen neuen <see cref="Kunde" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
         /// </summary>
         /// <param name="name">Der Nachname des Kunden</param>
         /// <param name="vorname">Der Vorname des Kunden</param>
-        /// <returns>Der neu erstellte <see cref="Kunde"/></returns>
+        /// <returns>Der neu erstellte <see cref="Kunde" /></returns>
         Kunde CreateKunde(string name, string vorname);
 
         /// <summary>
-        ///     Aktualisiert ein <see cref="Kunde"/> mit den neuen Daten auf der <see cref="IDatenbank"/>
+        ///     Aktualisiert ein <see cref="Kunde" /> mit den neuen Daten auf der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="kunde">Der <see cref="Kunde"/> der aktualisiert werden soll</param>
+        /// <param name="kunde">Der <see cref="Kunde" /> der aktualisiert werden soll</param>
         void UpdateKunde(Kunde kunde);
-        
+
         #endregion
-        
+
         #region Produkt
-        
+
         /// <summary>
-        ///     Holt eine <see cref="IEnumerable{T}"/> von <see cref="Produkt"/>en aus der <see cref="IDatenbank"/>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Produkt" />en aus der <see cref="IDatenbank" />
         /// </summary>
         /// <returns>Einen <see cref="IEnumerable{T}" /> von Produkten</returns>
         IEnumerable<Produkt> GetProdukte();
 
         /// <summary>
-        ///     Holt einen spezifischen <see cref="Produkt"/> aus der <see cref="IDatenbank"/> mit der
+        ///     Holt einen spezifischen <see cref="Produkt" /> aus der <see cref="IDatenbank" /> mit der
         ///     <see cref="Produkt.Artikelnummer" />
         /// </summary>
-        /// <param name="artikelnummer">Die <see cref="Produkt.Artikelnummer" /> des <see cref="Produkt" />en</param>
+        /// <param name="artikelnummer">Die <see cref="Produkt.Artikelnummer" /> des <see cref="Produkt" />s</param>
         /// <returns>
         ///     Ein <see cref="Produkt" /> mit dieser <see cref="Produkt.Artikelnummer" />, oder <c>null</c> falls solch
         ///     ein Produkt nicht existiert
@@ -80,47 +80,47 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         Produkt GetProdukt(int artikelnummer);
 
         /// <summary>
-        ///     Löscht ein <see cref="Produkt"/> aus der <see cref="IDatenbank"/>
+        ///     Löscht ein <see cref="Produkt" /> aus der <see cref="IDatenbank" />
         /// </summary>
         /// <param name="produkt">Das Produkt, der gelöscht werden soll</param>
         /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
         bool DeleteProdukt(Produkt produkt);
 
         /// <summary>
-        ///     Löscht ein <see cref="Produkt"/> aus der <see cref="IDatenbank"/>
+        ///     Löscht ein <see cref="Produkt" /> aus der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="artikelnummer">Die <see cref="Produkt.Artikelnummer"/> des <see cref="Produkt"/></param>
+        /// <param name="artikelnummer">Die <see cref="Produkt.Artikelnummer" /> des <see cref="Produkt" /></param>
         /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
         bool DeleteProdukt(int artikelnummer);
 
         /// <summary>
-        ///     Erstellt ein neues <see cref="Produkt"/> auf der <see cref="IDatenbank"/> und gibt diese zurück.
+        ///     Erstellt ein neues <see cref="Produkt" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
         /// </summary>
         /// <param name="name">Der Name des Produkts</param>
-        /// <returns>Das neu erstellte <see cref="Produkt"/></returns>
+        /// <returns>Das neu erstellte <see cref="Produkt" /></returns>
         Produkt CreateProdukt(string name);
 
         /// <summary>
-        ///     Aktualisiert ein <see cref="Produkt"/> mit den neuen Daten auf der <see cref="IDatenbank"/>
+        ///     Aktualisiert ein <see cref="Produkt" /> mit den neuen Daten auf der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="produkt">Das <see cref="Produkt"/> der aktualisiert werden soll</param>
+        /// <param name="produkt">Das <see cref="Produkt" /> der aktualisiert werden soll</param>
         void UpdateProdukt(Produkt produkt);
-        
+
         #endregion
-        
+
         #region Rezept
-        
+
         /// <summary>
-        ///     Holt eine <see cref="IEnumerable{T}"/> von <see cref="Rezept"/>en aus der <see cref="IDatenbank"/>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Rezept" />en aus der <see cref="IDatenbank" />
         /// </summary>
         /// <returns>Einen <see cref="IEnumerable{T}" /> von Rezepten</returns>
         IEnumerable<Rezept> GetRezepte();
 
         /// <summary>
-        ///     Holt einen spezifischen <see cref="Rezept"/> aus der <see cref="IDatenbank"/> mit der
+        ///     Holt einen spezifischen <see cref="Rezept" /> aus der <see cref="IDatenbank" /> mit der
         ///     <see cref="Rezept.RezeptNummer" />
         /// </summary>
-        /// <param name="artikelnummer">Die <see cref="Rezept.RezeptNummer" /> des <see cref="Rezept" />en</param>
+        /// <param name="artikelnummer">Die <see cref="Rezept.RezeptNummer" /> des <see cref="Rezept" />s</param>
         /// <returns>
         ///     Ein <see cref="Rezept" /> mit dieser <see cref="Rezept.RezeptNummer" />, oder <c>null</c> falls solch
         ///     ein Rezept nicht existiert
@@ -128,31 +128,80 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         Rezept GetRezept(int artikelnummer);
 
         /// <summary>
-        ///     Löscht ein <see cref="Rezept"/> aus der <see cref="IDatenbank"/>
+        ///     Löscht ein <see cref="Rezept" /> aus der <see cref="IDatenbank" />
         /// </summary>
         /// <param name="rezept">Das Rezept, der gelöscht werden soll</param>
         /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
         bool DeleteRezept(Rezept rezept);
 
         /// <summary>
-        ///     Löscht ein <see cref="Rezept"/> aus der <see cref="IDatenbank"/>
+        ///     Löscht ein <see cref="Rezept" /> aus der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="artikelnummer">Die <see cref="Rezept.RezeptNummer"/> des <see cref="Rezept"/></param>
+        /// <param name="artikelnummer">Die <see cref="Rezept.RezeptNummer" /> des <see cref="Rezept" /></param>
         /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
         bool DeleteRezept(int artikelnummer);
 
         /// <summary>
-        ///     Erstellt ein neues <see cref="Rezept"/> auf der <see cref="IDatenbank"/> und gibt diese zurück.
+        ///     Erstellt ein neues <see cref="Rezept" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
         /// </summary>
-        /// <returns>Das neu erstellte <see cref="Rezept"/></returns>
+        /// <returns>Das neu erstellte <see cref="Rezept" /></returns>
         Rezept CreateRezept();
 
         /// <summary>
-        ///     Aktualisiert ein <see cref="Rezept"/> mit den neuen Daten auf der <see cref="IDatenbank"/>
+        ///     Aktualisiert ein <see cref="Rezept" /> mit den neuen Daten auf der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="rezept">Das <see cref="Rezept"/> der aktualisiert werden soll</param>
+        /// <param name="rezept">Das <see cref="Rezept" /> der aktualisiert werden soll</param>
         void UpdateRezept(Rezept rezept);
-        
+
+        #endregion
+
+        #region Lieferposition
+
+        /// <summary>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Lieferposition" />en aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <returns>Einen <see cref="IEnumerable{T}" /> von Lieferpositionen</returns>
+        IEnumerable<Lieferposition> GetLieferpositionen();
+
+        /// <summary>
+        ///     Holt eine spezifische <see cref="Lieferposition" /> aus der <see cref="IDatenbank" /> mit der
+        ///     <see cref="Lieferposition.Id" />
+        /// </summary>
+        /// <param name="artikelnummer">Die <see cref="Lieferposition.Id" /> der <see cref="Lieferposition" />s</param>
+        /// <returns>
+        ///     Eine <see cref="Lieferposition" /> mit dieser <see cref="Lieferposition.Id" />, oder <c>null</c>
+        ///     falls solch eine Lieferposition nicht existiert
+        /// </returns>
+        Lieferposition GetLieferposition(int artikelnummer);
+
+        /// <summary>
+        ///     Löscht eine <see cref="Lieferposition" /> aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="lieferposition">Die Lieferposition, die gelöscht werden soll</param>
+        /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
+        bool DeleteLieferposition(Lieferposition lieferposition);
+
+        /// <summary>
+        ///     Löscht eine <see cref="Lieferposition" /> aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="artikelnummer">
+        ///     Die <see cref="Lieferposition.Id" /> des <see cref="Lieferposition" />
+        /// </param>
+        /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
+        bool DeleteLieferposition(int artikelnummer);
+
+        /// <summary>
+        ///     Erstellt eine neue <see cref="Lieferposition" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
+        /// </summary>
+        /// <returns>Das neu erstellte <see cref="Lieferposition" /></returns>
+        Lieferposition CreateLieferposition();
+
+        /// <summary>
+        ///     Aktualisiert ein <see cref="Lieferposition" /> mit den neuen Daten auf der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="lieferposition">Das <see cref="Lieferposition" /> der aktualisiert werden soll</param>
+        void UpdateLieferposition(Lieferposition lieferposition);
+
         #endregion
     }
 }

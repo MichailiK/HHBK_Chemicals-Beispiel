@@ -20,7 +20,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
             kundenListBox.Items.Clear();
             kundenListBox.Items.AddRange(namen.Cast<object>().ToArray());
         }
-        
+
         public void ProduktListeAktualisieren(IEnumerable<string> namen)
         {
             produkteListBox.Items.Clear();
@@ -33,6 +33,12 @@ namespace HHBK_Chemicals_ERP_CS.Main
             rezeptListBox.Items.AddRange(namen.Cast<object>().ToArray());
         }
 
+        public void LieferungListeAktualisieren(IEnumerable<string> namen)
+        {
+            lieferungListBox.Items.Clear();
+            lieferungListBox.Items.AddRange(namen.Cast<object>().ToArray());
+        }
+
         #region Events
 
         private void ViewMain_Load(object sender, EventArgs e)
@@ -41,11 +47,12 @@ namespace HHBK_Chemicals_ERP_CS.Main
         }
 
         #region Kunde
-        
+
         private void kundenListBox_DoubleClick(object sender, EventArgs e)
         {
             Controller.KundeGeklickt(kundenListBox.SelectedIndex);
         }
+
         private void kundenListBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -63,15 +70,16 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             Controller.NeuenKundeErstellen();
         }
-        
+
         #endregion
-        
+
         #region Produkt
-        
+
         private void produktListBox_DoubleClick(object sender, EventArgs e)
         {
             Controller.ProduktGeklickt(produkteListBox.SelectedIndex);
         }
+
         private void produktListBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -98,13 +106,14 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             Controller.RezeptGeklickt(rezeptListBox.SelectedIndex);
         }
+
         private void rezeptListBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 Controller.ProduktGeklickt(rezeptListBox.SelectedIndex);
         }
-        
-        
+
+
         private void rezeptNummerAufrufenButton_Click(object sender, EventArgs e)
         {
             Controller.RezeptMitNummerÖffnen((int) rezeptNummerAufrufenNumericUpDown.Value);
@@ -114,6 +123,33 @@ namespace HHBK_Chemicals_ERP_CS.Main
         private void neuesRezeptButton_Click(object sender, EventArgs e)
         {
             Controller.NeuenRezeptErstellen();
+        }
+
+        #endregion
+
+        #region Lieferposition
+
+        private void lieferungenListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Controller.LieferungGeklickt(lieferungListBox.SelectedIndex);
+        }
+
+        private void lieferungenListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Controller.LieferungGeklickt(lieferungListBox.SelectedIndex);
+        }
+
+
+        private void lieferungNummerAufrufenButton_Click(object sender, EventArgs e)
+        {
+            Controller.LieferungMitNummerÖffnen((int) lieferpositionAufrufenNumericUpDown.Value);
+        }
+
+
+        private void neueLieferungButton_Click(object sender, EventArgs e)
+        {
+            Controller.NeueLieferungErstellen();
         }
 
         #endregion

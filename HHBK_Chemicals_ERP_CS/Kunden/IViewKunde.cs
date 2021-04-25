@@ -4,8 +4,8 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
     ///     Repräsentiert die View für das einlesen oder modifizieren für <see cref="Kunde" />n
     /// </summary>
     /// <seealso cref="Kunde" />
-    /// <seealso cref="IModelKunde"/>
-    /// <seealso cref="IControllerKunde"/>
+    /// <seealso cref="IModelKunde" />
+    /// <seealso cref="IControllerKunde" />
     public interface IViewKunde
     {
         IControllerKunde Controller { set; }

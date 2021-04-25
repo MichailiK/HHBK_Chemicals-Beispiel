@@ -8,7 +8,7 @@ namespace HHBK_Chemicals_ERP_CS
     internal static class Program
     {
         /// <summary>
-        ///     Der Haupteinstiegspunkt für die Anwendung.
+        ///     Der Haupteinstiegspunkt für die Anwendung
         /// </summary>
         [STAThread]
         private static void Main()

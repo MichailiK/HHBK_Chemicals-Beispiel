@@ -39,7 +39,7 @@ namespace HHBK_Chemicals_ERP_CS.Zahlung
         public string Iban { get; }
 
         /// <summary>
-        ///     Der <see cref="Kunden.Kunde" /> des <see cref="Zahlungseingang" />.
+        ///     Der <see cref="Kunden.Kunde" /> des <see cref="Zahlungseingang" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Kunde_Kundennummer", auf der Datenbank</remarks>
         /// <seealso cref="Kunden.Kunde" />

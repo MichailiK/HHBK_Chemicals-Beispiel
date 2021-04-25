@@ -3,22 +3,22 @@ using System.Linq;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
 using HHBK_Chemicals_ERP_CS.Kunden;
+using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main
 {
-    /// <inheritdoc cref="IModelMain"/>
+    /// <inheritdoc cref="IModelMain" />
     public class ModelMain : IModelMain
     {
         private const int MaxPreviewEntries = 250;
-    
+
         private readonly IDatenbank _datenbank;
 
         private List<Kunde> _kundenListe;
+        private List<Lieferposition> _lieferungListe;
         private List<Produkt> _produktListe;
         private List<Rezept> _rezeptListe;
-
-
 
         public ModelMain(IDatenbank datenbank)
         {
@@ -28,7 +28,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         public IViewMain ViewMain { private get; set; }
 
         #region Kunde
-        
+
         public void GeklicktenKundeAnsehen(int index)
         {
             KundeAnsehen(_kundenListe[index]);
@@ -75,11 +75,11 @@ namespace HHBK_Chemicals_ERP_CS.Main
                                  ? "<kein name>"
                                  : kunde.Vorname + " " + kunde.Name)));
         }
-        
+
         #endregion
-        
+
         #region Produkt
-        
+
         public void GeklicktenProduktAnsehen(int index)
         {
             ProduktAnsehen(_produktListe[index]);
@@ -89,7 +89,8 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             var produkt = _datenbank.GetProdukt(nummer);
             if (produkt == null)
-                MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden", MessageBoxButtons.OK,
+                MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             else
                 ProduktAnsehen(produkt);
@@ -125,11 +126,11 @@ namespace HHBK_Chemicals_ERP_CS.Main
                                (string.IsNullOrWhiteSpace(produkt.Name) ? "<kein name>" : produkt.Name)
                                + " (" + produkt.Verkaufseinheit + produkt.Einheit + ", " + produkt.PreisVk + " €)"));
         }
-        
+
         #endregion
-        
+
         #region Rezept
-        
+
         public void GeklicktenRezeptAnsehen(int index)
         {
             RezeptAnsehen(_rezeptListe[index]);
@@ -139,7 +140,8 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             var rezept = _datenbank.GetRezept(nummer);
             if (rezept == null)
-                MessageBox.Show("Das Rezept konnte nicht gefunden werden", "Rezept nicht gefunden", MessageBoxButtons.OK,
+                MessageBox.Show("Das Rezept konnte nicht gefunden werden", "Rezept nicht gefunden",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             else
                 RezeptAnsehen(rezept);
@@ -176,7 +178,57 @@ namespace HHBK_Chemicals_ERP_CS.Main
                                   ? "unbekanntes Artikel"
                                   : "Artikel " + rezept.Produkt.Artikelnummer)));
         }
-        
+
+        #endregion
+
+        #region Lieferung
+
+        public void GeklickteLieferungAnsehen(int index)
+        {
+            LieferungAnsehen(_lieferungListe[index]);
+        }
+
+        public void LieferungMitNummerÖffnen(int nummer)
+        {
+            var lieferung = _datenbank.GetLieferposition(nummer);
+            if (lieferung == null)
+                MessageBox.Show("Das Lieferung konnte nicht gefunden werden", "Lieferung nicht gefunden",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+                LieferungAnsehen(lieferung);
+        }
+
+        public void NeueLieferungErstellen()
+        {
+            LieferungAnsehen(_datenbank.CreateLieferposition());
+        }
+
+
+        public void LieferungAnsehen(Lieferposition lieferung)
+        {
+            var viewLieferung = new ViewLieferposition();
+            var modelLieferung = new ModelLieferposition(_datenbank, lieferung);
+            var controllerLieferung = new ControllerLieferposition(modelLieferung);
+
+            viewLieferung.Controller = controllerLieferung;
+            controllerLieferung.ModelLieferposition = modelLieferung;
+            modelLieferung.ViewLieferposition = viewLieferung;
+
+            viewLieferung.ShowDialog();
+
+            LieferungListeAktualisieren();
+        }
+
+        public void LieferungListeAktualisieren()
+        {
+            _lieferungListe = _datenbank.GetLieferpositionen().Take(MaxPreviewEntries).ToList();
+            ViewMain.LieferungListeAktualisieren(
+                _lieferungListe.Select(
+                    lieferung => lieferung.Id + ": " + lieferung.Liefernummer + " (" +
+                                 lieferung.Versanddatum.ToString("dd.MM.yyyy") + ")"));
+        }
+
         #endregion
     }
 }

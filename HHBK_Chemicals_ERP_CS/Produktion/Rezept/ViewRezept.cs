@@ -45,7 +45,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         /// </remarks>
         private void NameAktualisieren()
         {
-            var result = "Rezept für Artikel " + ArtikelNummer; 
+            var result = "Rezept für Artikel " + ArtikelNummer;
             rezeptNamenLabel.Text = result;
             Text = "Rezept - " + result;
         }

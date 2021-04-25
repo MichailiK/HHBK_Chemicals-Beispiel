@@ -37,14 +37,14 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         public DateTimeOffset StartIst { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Produktion.Rezept" /> des <see cref="Produktionsplan" />.
+        ///     Die <see cref="Produktion.Rezept" /> des <see cref="Produktionsplan" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Rezept_Rezeptnummer", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Rezept" />
         public Rezept Rezept { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Produktion.Produktionsposition" /> des <see cref="Produktionsplan" />.
+        ///     Die <see cref="Produktion.Produktionsposition" /> des <see cref="Produktionsplan" />
         /// </summary>
         /// <remarks>
         ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Produktionspositionsnummer", auf der Datenbank
@@ -53,7 +53,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         public Produktionsposition Produktionsposition { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Lager.Bestellposition" /> des <see cref="Produktionsplan" />.
+        ///     Die <see cref="Lager.Bestellposition" /> des <see cref="Produktionsplan" />
         /// </summary>
         /// <remarks>
         ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Bestellpositionsnummer", auf der
@@ -63,7 +63,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         public Bestellposition Bestellposition { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Kunden.Kunde" /> des <see cref="Produktionsplan" />.
+        ///     Die <see cref="Kunden.Kunde" /> des <see cref="Produktionsplan" />
         /// </summary>
         /// <remarks>
         ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Kunde_Kundenummer", auf der Datenbank

@@ -63,7 +63,18 @@
         <Compile Include="Lager\Bestellposition.cs" />
         <Compile Include="Lager\Lagerposition.cs" />
         <Compile Include="Lager\Lagerposition_has_Rezept.cs" />
-        <Compile Include="Lager\Lieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\ControllerLieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\IControllerLieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\IModelLieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\IViewLieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\Lieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\ModelLieferposition.cs" />
+        <Compile Include="Lager\Lieferposition\ViewLieferposition.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Lager\Lieferposition\ViewLieferposition.Designer.cs">
+          <DependentUpon>ViewLieferposition.cs</DependentUpon>
+        </Compile>
         <Compile Include="Main\ControllerMain.cs" />
         <Compile Include="Main\IControllerMain.cs" />
         <Compile Include="Main\IModelMain.cs" />
@@ -95,11 +106,11 @@
         <Compile Include="Produktion\Rezept\IViewRezept.cs" />
         <Compile Include="Produktion\Rezept\ModelRezept.cs" />
         <Compile Include="Produktion\Rezept\Rezept.cs" />
-        <Compile Include="Produktion\Rezept\ViewProdukt.cs">
+        <Compile Include="Produktion\Rezept\ViewRezept.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Produktion\Rezept\ViewProdukt.Designer.cs">
-          <DependentUpon>ViewProdukt.cs</DependentUpon>
+        <Compile Include="Produktion\Rezept\ViewRezept.Designer.cs">
+          <DependentUpon>ViewRezept.cs</DependentUpon>
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,14 +119,17 @@
         <EmbeddedResource Include="Kunden\ViewKunde.resx">
           <DependentUpon>ViewKunde.cs</DependentUpon>
         </EmbeddedResource>
+        <EmbeddedResource Include="Lager\Lieferposition\ViewLieferposition.resx">
+          <DependentUpon>ViewLieferposition.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Main\ViewMain.resx">
           <DependentUpon>ViewMain.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Produktion\Produkt\ViewProdukt.resx">
           <DependentUpon>ViewProdukt.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="Produktion\Rezept\ViewProdukt.resx">
-          <DependentUpon>ViewProdukt.cs</DependentUpon>
+        <EmbeddedResource Include="Produktion\Rezept\ViewRezept.resx">
+          <DependentUpon>ViewRezept.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>

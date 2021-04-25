@@ -1,6 +1,6 @@
 namespace HHBK_Chemicals_ERP_CS.Main
 {
-    /// <inheritdoc cref="IControllerMain"/>
+    /// <inheritdoc cref="IControllerMain" />
     public class ControllerMain : IControllerMain
     {
         public IModelMain ModelMain { private get; set; }
@@ -11,6 +11,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
             ModelMain.KundenListeAktualisieren();
             ModelMain.ProduktListeAktualisieren();
             ModelMain.RezeptListeAktualisieren();
+            ModelMain.LieferungListeAktualisieren();
         }
 
         #region Kunde
@@ -30,9 +31,9 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             ModelMain.NeuenKundeErstellen();
         }
-        
+
         #endregion
-        
+
         #region Produkt
 
         public void ProduktGeklickt(int index)
@@ -50,9 +51,9 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             ModelMain.NeuenProduktErstellen();
         }
-        
+
         #endregion
-        
+
         #region Rezept
 
         public void RezeptGeklickt(int index)
@@ -70,7 +71,27 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             ModelMain.NeuenRezeptErstellen();
         }
-        
+
+        #endregion
+
+        #region Lieferung
+
+        public void LieferungGeklickt(int index)
+        {
+            if (index != -1)
+                ModelMain.GeklickteLieferungAnsehen(index);
+        }
+
+        public void LieferungMitNummerÖffnen(int nummer)
+        {
+            ModelMain.LieferungMitNummerÖffnen(nummer);
+        }
+
+        public void NeueLieferungErstellen()
+        {
+            ModelMain.NeueLieferungErstellen();
+        }
+
         #endregion
     }
 }

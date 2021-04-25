@@ -27,7 +27,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         }
 
         /// <summary>
-        ///     Das <see cref="Produktion.Produkt" /> der <see cref="Produktionsposition" />.
+        ///     Das <see cref="Produktion.Produkt" /> der <see cref="Produktionsposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Produkt_Artikelnummer", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Produkt" />
@@ -44,14 +44,14 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         public string NameProduzent { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Lager.Bestellposition" /> der <see cref="Produktionsposition" />.
+        ///     Die <see cref="Lager.Bestellposition" /> der <see cref="Produktionsposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Bestellpositionsnummer", auf der Datenbank</remarks>
         /// <seealso cref="Lager.Bestellposition" />
         public Bestellposition Bestellposition { get; set; }
 
         /// <summary>
-        ///     Die <see cref="Kunden.Kunde" /> der <see cref="Produktionsposition" />.
+        ///     Die <see cref="Kunden.Kunde" /> der <see cref="Produktionsposition" />
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Kunde_Kundenummer", auf der Datenbank</remarks>
         /// <seealso cref="Kunden.Kunde" />

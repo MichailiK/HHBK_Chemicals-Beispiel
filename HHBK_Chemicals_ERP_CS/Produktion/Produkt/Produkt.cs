@@ -26,14 +26,14 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         ///     Der Wert von der Masse des Produkts
         /// </summary>
         /// <example>1kg, 3kg, 50g</example>
-        /// <seealso cref="Verkaufseinheit"/>
+        /// <seealso cref="Verkaufseinheit" />
         public int Verkaufseinheit { get; set; }
 
         /// <summary>
         ///     Die Einheit der Masse des Produkts
         /// </summary>
         /// <example>g (Gramm), kg (Kilogramm)</example>
-        /// <seealso cref="Einheit"/>
+        /// <seealso cref="Einheit" />
         public string Einheit { get; set; }
 
         /// <summary>

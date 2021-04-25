@@ -3,7 +3,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
     /// <summary>
     ///     Repräsentiert ein Kunde
     /// </summary>
-    /// <seealso cref="IViewKunde"/>
+    /// <seealso cref="IViewKunde" />
     public class Kunde
     {
         /// <summary>

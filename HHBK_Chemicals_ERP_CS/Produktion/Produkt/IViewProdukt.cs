@@ -4,8 +4,8 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
     ///     Repräsentiert die View für das einlesen oder modifizieren für <see cref="Produkt" />en
     /// </summary>
     /// <seealso cref="Produkt" />
-    /// <seealso cref="IModelProdukt"/>
-    /// <seealso cref="IControllerProdukt"/>
+    /// <seealso cref="IModelProdukt" />
+    /// <seealso cref="IControllerProdukt" />
     public interface IViewProdukt
     {
         IControllerProdukt Controller { set; }
