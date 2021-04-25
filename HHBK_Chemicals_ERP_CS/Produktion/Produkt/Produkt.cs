@@ -22,10 +22,18 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
 
         public string Name { get; set; }
 
-        // TODO "Verkaufsinheit" dokumentieren
+        /// <summary>
+        ///     Der Wert von der Masse des Produkts
+        /// </summary>
+        /// <example>1kg, 3kg, 50g</example>
+        /// <seealso cref="Verkaufseinheit"/>
         public int Verkaufseinheit { get; set; }
 
-        // TODO "Einheit" dokumentieren
+        /// <summary>
+        ///     Die Einheit der Masse des Produkts
+        /// </summary>
+        /// <example>g (Gramm), kg (Kilogramm)</example>
+        /// <seealso cref="Einheit"/>
         public string Einheit { get; set; }
 
         /// <summary>

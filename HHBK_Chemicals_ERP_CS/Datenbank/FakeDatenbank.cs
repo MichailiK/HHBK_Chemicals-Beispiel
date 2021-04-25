@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HHBK_Chemicals_ERP_CS.Kunden;
+using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Datenbank
 {
@@ -18,7 +19,21 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Kunde" />ns erhöht wird und
         ///     als eine einzigartige <see cref="Kunde.Kundennummer" /> verwendet wird
         /// </summary>
-        private int _autoIncrementCount;
+        private int _kundenAutoIncrementCount;
+
+        
+        /// <summary>
+        ///     Eine "Tabelle" für Produkte
+        /// </summary>
+        private readonly Dictionary<int, Produkt> _produkte;
+
+        /// <summary>
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Produkt" />e erhöht wird und
+        ///     als eine einzigartige <see cref="Produkt.Artikelnummer" /> verwendet wird
+        /// </summary>
+        private int _produkteAutoIncrementCount;
+
+
 
         /// <summary>
         ///     Initialisiert eine Datenbank mit 3 Beispieleinträgen
@@ -31,9 +46,18 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
                 {2, new Kunde(2, "Han irgendwas", "Fatih", "Yarrakstr.", 2, 6969, "Irgendwo", "fatih@gmail.com")},
                 {3, new Kunde(3, "der Zweite", "Michail", "eine str.", 10, 1234, "ein ort", "noch.eine@email.com")}
             };
+            _kundenAutoIncrementCount = _kunden.Count;
 
-            _autoIncrementCount = _kunden.Count;
+            _produkte = new Dictionary<int, Produkt>
+            {
+                {1, new Produkt(1, "Ein Produkt! Wow!", 20, "g", 19.99m)},
+                {2, new Produkt(2, "So ein Chemical", 50, "g", 49.99m)},
+                {3, new Produkt(2, "Budget Chemical", 10, "g", 9.99m)}
+            };
+            _produkteAutoIncrementCount = _produkte.Count;
         }
+
+        #region Kunde
 
         public IEnumerable<Kunde> GetKunden()
         {
@@ -57,7 +81,7 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
 
         public Kunde CreateKunde(string name, string vorname)
         {
-            var kunde = new Kunde(++_autoIncrementCount, name, vorname, "", 0, 0, "", "");
+            var kunde = new Kunde(++_kundenAutoIncrementCount, name, vorname, "", 0, 0, "", "");
             AddOrUpdateKunde(kunde);
             return kunde;
         }
@@ -75,5 +99,52 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
 
             _kunden.Add(kunde.Kundennummer, kunde);
         }
+
+        #endregion
+
+        #region Produkt
+
+        public IEnumerable<Produkt> GetProdukte()
+        {
+            return _produkte.Values;
+        }
+
+        public Produkt GetProdukt(int artikelnummer)
+        {
+            return _produkte.TryGetValue(artikelnummer, out var produkt) ? produkt : null;
+        }
+
+        public bool DeleteProdukt(Produkt produkt)
+        {
+            return DeleteProdukt(produkt.Artikelnummer);
+        }
+
+        public bool DeleteProdukt(int artikelnummer)
+        {
+            return _produkte.Remove(artikelnummer);
+        }
+
+        public Produkt CreateProdukt(string produktname)
+        {
+            var produkt = new Produkt(++_produkteAutoIncrementCount, produktname, 0, "", 0m);
+            AddOrUpdateProdukt(produkt);
+            return produkt;
+        }
+
+        public void UpdateProdukt(Produkt produkt)
+        {
+            AddOrUpdateProdukt(produkt);
+        }
+
+
+        private void AddOrUpdateProdukt(Produkt produkt)
+        {
+            if (_produkte.ContainsKey(produkt.Artikelnummer))
+                _produkte.Remove(produkt.Artikelnummer);
+
+            _produkte.Add(produkt.Artikelnummer, produkt);
+        }
+        
+        #endregion
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
 using HHBK_Chemicals_ERP_CS.Kunden;
+using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main
 {
@@ -12,6 +13,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         private readonly IDatenbank _datenbank;
 
         private List<Kunde> _kundenListe;
+        private List<Produkt> _produktListe;
 
 
         public ModelMain(IDatenbank datenbank)
@@ -21,6 +23,8 @@ namespace HHBK_Chemicals_ERP_CS.Main
 
         public IViewMain ViewMain { private get; set; }
 
+        #region Kunde
+        
         public void GeklicktenKundeAnsehen(int index)
         {
             KundeAnsehen(_kundenListe[index]);
@@ -67,5 +71,57 @@ namespace HHBK_Chemicals_ERP_CS.Main
                                  ? "<kein name>"
                                  : kunde.Vorname + " " + kunde.Name)));
         }
+        
+        #endregion
+        
+        #region Produkt
+        
+        public void GeklicktenProduktAnsehen(int index)
+        {
+            ProduktAnsehen(_produktListe[index]);
+        }
+
+        public void ProduktMitNummerÖffnen(int nummer)
+        {
+            var produkt = _datenbank.GetProdukt(nummer);
+            if (produkt == null)
+                MessageBox.Show("Der Produkt konnte nicht gefunden werden", "Produkt nicht gefunden", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+                ProduktAnsehen(produkt);
+        }
+
+        public void NeuenProduktErstellen()
+        {
+            ProduktAnsehen(_datenbank.CreateProdukt(""));
+        }
+
+
+        public void ProduktAnsehen(Produkt produkt)
+        {
+            var viewProdukt = new ViewProdukt();
+            var modelProdukt = new ModelProdukt(_datenbank, produkt);
+            var controllerProdukt = new ControllerProdukt(modelProdukt);
+
+            viewProdukt.Controller = controllerProdukt;
+            controllerProdukt.ModelProdukt = modelProdukt;
+            modelProdukt.ViewProdukt = viewProdukt;
+
+            viewProdukt.ShowDialog();
+
+            ProduktListeAktualisieren();
+        }
+
+        public void ProduktListeAktualisieren()
+        {
+            _produktListe = _datenbank.GetProdukte().Take(250).ToList();
+            ViewMain.ProduktListeAktualisieren(
+                _produktListe.Select(
+                    produkt => produkt.Artikelnummer + ": " +
+                               (string.IsNullOrWhiteSpace(produkt.Name) ? "<kein name>" : produkt.Name)
+                               + " (" + produkt.Verkaufseinheit + produkt.Einheit + ", " + produkt.PreisVk + " €)"));
+        }
+        
+        #endregion
     }
 }

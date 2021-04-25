@@ -20,6 +20,12 @@ namespace HHBK_Chemicals_ERP_CS.Main
             kundenListBox.Items.Clear();
             kundenListBox.Items.AddRange(namen.Cast<object>().ToArray());
         }
+        
+        public void ProduktListeAktualisieren(IEnumerable<string> namen)
+        {
+            produkteListBox.Items.Clear();
+            produkteListBox.Items.AddRange(namen.Cast<object>().ToArray());
+        }
 
         #region Events
 
@@ -28,7 +34,8 @@ namespace HHBK_Chemicals_ERP_CS.Main
             Controller.FormGeladen();
         }
 
-
+        #region Kunde
+        
         private void kundenListBox_DoubleClick(object sender, EventArgs e)
         {
             Controller.KundeGeklickt(kundenListBox.SelectedIndex);
@@ -50,6 +57,34 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             Controller.NeuenKundeErstellen();
         }
+        
+        #endregion
+        
+        #region Produkt
+        
+        private void produktListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Controller.ProduktGeklickt(produkteListBox.SelectedIndex);
+        }
+        private void produktListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Controller.ProduktGeklickt(produkteListBox.SelectedIndex);
+        }
+
+
+        private void produktNummerAufrufenButton_Click(object sender, EventArgs e)
+        {
+            Controller.ProduktMitNummerÖffnen((int) produktNummerAufrufenNumericUpDown.Value);
+        }
+
+
+        private void neuenProduktButton_Click(object sender, EventArgs e)
+        {
+            Controller.NeuenProduktErstellen();
+        }
+        
+        #endregion
 
         #endregion
     }

@@ -5,6 +5,15 @@ namespace HHBK_Chemicals_ERP_CS.Main
     {
         public IModelMain ModelMain { private get; set; }
 
+
+        public void FormGeladen()
+        {
+            ModelMain.KundenListeAktualisieren();
+            ModelMain.ProduktListeAktualisieren();
+        }
+
+        #region Kunde
+
         public void KundeGeklickt(int index)
         {
             if (index != -1)
@@ -20,10 +29,27 @@ namespace HHBK_Chemicals_ERP_CS.Main
         {
             ModelMain.NeuenKundeErstellen();
         }
+        
+        #endregion
+        
+        #region Produkt
 
-        public void FormGeladen()
+        public void ProduktGeklickt(int index)
         {
-            ModelMain.KundenListeAktualisieren();
+            if (index != -1)
+                ModelMain.GeklicktenProduktAnsehen(index);
         }
+
+        public void ProduktMitNummerÖffnen(int nummer)
+        {
+            ModelMain.ProduktMitNummerÖffnen(nummer);
+        }
+
+        public void NeuenProduktErstellen()
+        {
+            ModelMain.NeuenProduktErstellen();
+        }
+        
+        #endregion
     }
 }

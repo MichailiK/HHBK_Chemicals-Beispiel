@@ -75,9 +75,20 @@
         <Compile Include="Main\ViewMain.Designer.cs">
           <DependentUpon>ViewMain.cs</DependentUpon>
         </Compile>
-        <Compile Include="Produktion\Produkt.cs" />
+        <Compile Include="Produktion\Produkt\ControllerProdukt.cs" />
+        <Compile Include="Produktion\Produkt\IControllerProdukt.cs" />
+        <Compile Include="Produktion\Produkt\IModelProdukt.cs" />
+        <Compile Include="Produktion\Produkt\IViewProdukt.cs" />
+        <Compile Include="Produktion\Produkt\ModelProdukt.cs" />
+        <Compile Include="Produktion\Produkt\Produkt.cs" />
         <Compile Include="Produktion\Produktionsplan.cs" />
         <Compile Include="Produktion\Produktionsposition.cs" />
+        <Compile Include="Produktion\Produkt\ViewProdukt.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Produktion\Produkt\ViewProdukt.Designer.cs">
+          <DependentUpon>ViewProdukt.cs</DependentUpon>
+        </Compile>
         <Compile Include="Produktion\Rezept.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +99,9 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Main\ViewMain.resx">
           <DependentUpon>ViewMain.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Produktion\Produkt\ViewProdukt.resx">
+          <DependentUpon>ViewProdukt.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
