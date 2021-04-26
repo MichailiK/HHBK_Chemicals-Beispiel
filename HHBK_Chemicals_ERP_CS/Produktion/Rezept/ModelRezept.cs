@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
 
 namespace HHBK_Chemicals_ERP_CS.Produktion
@@ -16,6 +17,27 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         }
 
         public IViewRezept ViewRezept { private get; set; }
+
+        public void ProduktÖffnen(int artikelnummer)
+        {
+            var produkt = _datenbank.GetProdukt(artikelnummer);
+            if (produkt == null)
+                MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+            {
+                var viewProdukt = new ViewProdukt();
+                var modelProdukt = new ModelProdukt(_datenbank, produkt);
+                var controllerProdukt = new ControllerProdukt(modelProdukt);
+
+                viewProdukt.Controller = controllerProdukt;
+                controllerProdukt.ModelProdukt = modelProdukt;
+                modelProdukt.ViewProdukt = viewProdukt;
+
+                viewProdukt.ShowDialog();
+            }
+        }
 
         public void RezeptAktualisieren()
         {

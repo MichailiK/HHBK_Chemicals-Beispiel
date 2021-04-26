@@ -10,6 +10,11 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
 
         public IModelRezept ModelRezept { private get; set; }
 
+        public void ProduktÖffnen(int artikelnummer)
+        {
+            ModelRezept.ProduktÖffnen(artikelnummer);
+        }
+
         public void RezeptAktualisieren()
         {
             ModelRezept.RezeptAktualisieren();

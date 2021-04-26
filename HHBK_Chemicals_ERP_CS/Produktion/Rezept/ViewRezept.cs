@@ -57,6 +57,13 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             Controller.FormGeladen();
         }
 
+
+        private void artikelNummerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Controller.ProduktÖffnen(ArtikelNummer);
+        }
+
+
         private void applyButton_Click(object sender, EventArgs e)
         {
             try

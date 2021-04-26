@@ -32,7 +32,6 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         private void InitializeComponent()
         {
             System.Windows.Forms.Label d_herstellungsdauerLabel;
-            System.Windows.Forms.Label d_artikelNummerLabel;
             System.Windows.Forms.Label d_rezeptNummerLabel;
             this.rezeptNamenLabel = new System.Windows.Forms.Label();
             this.rezeptNummerNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -42,8 +41,8 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.d_minutenLabel = new System.Windows.Forms.Label();
+            this.artikelNummerLinkLabel = new System.Windows.Forms.LinkLabel();
             d_herstellungsdauerLabel = new System.Windows.Forms.Label();
-            d_artikelNummerLabel = new System.Windows.Forms.Label();
             d_rezeptNummerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.rezeptNummerNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.verkaufseinheitNumericUpDown)).BeginInit();
@@ -57,14 +56,6 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             d_herstellungsdauerLabel.Size = new System.Drawing.Size(100, 20);
             d_herstellungsdauerLabel.TabIndex = 3;
             d_herstellungsdauerLabel.Text = "Herstellungsdauer";
-            // 
-            // d_artikelNummerLabel
-            // 
-            d_artikelNummerLabel.Location = new System.Drawing.Point(8, 74);
-            d_artikelNummerLabel.Name = "d_artikelNummerLabel";
-            d_artikelNummerLabel.Size = new System.Drawing.Size(100, 20);
-            d_artikelNummerLabel.TabIndex = 6;
-            d_artikelNummerLabel.Text = "Artikelnummer";
             // 
             // d_rezeptNummerLabel
             // 
@@ -167,6 +158,16 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.d_minutenLabel.Text = "Minuten";
             this.d_minutenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // artikelNummerLinkLabel
+            // 
+            this.artikelNummerLinkLabel.Location = new System.Drawing.Point(8, 76);
+            this.artikelNummerLinkLabel.Name = "artikelNummerLinkLabel";
+            this.artikelNummerLinkLabel.Size = new System.Drawing.Size(100, 20);
+            this.artikelNummerLinkLabel.TabIndex = 6;
+            this.artikelNummerLinkLabel.TabStop = true;
+            this.artikelNummerLinkLabel.Text = "Artikelnummer";
+            this.artikelNummerLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.artikelNummerLinkLabel_LinkClicked);
+            // 
             // ViewRezept
             // 
             this.AcceptButton = this.applyButton;
@@ -174,11 +175,11 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(304, 163);
+            this.Controls.Add(this.artikelNummerLinkLabel);
             this.Controls.Add(this.d_minutenLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.applyButton);
-            this.Controls.Add(d_artikelNummerLabel);
             this.Controls.Add(this.artikelNummerNumericUpDown);
             this.Controls.Add(this.verkaufseinheitNumericUpDown);
             this.Controls.Add(d_herstellungsdauerLabel);
@@ -212,5 +213,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         private System.Windows.Forms.NumericUpDown artikelNummerNumericUpDown;
 
         #endregion
+
+        private System.Windows.Forms.LinkLabel artikelNummerLinkLabel;
     }
 }

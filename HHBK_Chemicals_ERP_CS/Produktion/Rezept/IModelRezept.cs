@@ -11,6 +11,12 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         IViewRezept ViewRezept { set; }
 
         /// <summary>
+        ///     Öffnet eine <see cref="IViewProdukt"/> mit der angegeben <see cref="Produkt.Artikelnummer"/>
+        /// </summary>
+        /// <param name="artikelnummer">Die <see cref="Produkt.Artikelnummer"/></param>
+        void ProduktÖffnen(int artikelnummer);
+
+        /// <summary>
         ///     Aktualisiert den <see cref="Rezept" /> mit den neuen Daten, die in der <see cref="IViewRezept" /> angegeben
         ///     sind
         /// </summary>
