@@ -1,5 +1,5 @@
 using HHBK_Chemicals_ERP_CS.Kunden;
-using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
+using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main
@@ -151,6 +151,44 @@ namespace HHBK_Chemicals_ERP_CS.Main
         ///     Aktualisiert die Lieferungliste auf der <see cref="IViewLieferposition" />
         /// </summary>
         void LieferungListeAktualisieren();
+
+        #endregion
+
+        #region Bestellung
+
+        /// <summary>
+        ///     Öffnet eine <see cref="IViewBestellposition" /> mit den <see cref="Bestellposition" />, der auf die Liste geklickt
+        ///     worden
+        ///     ist
+        /// </summary>
+        /// <param name="index">Index des geklickten Element auf der Liste</param>
+        void GeklickteBestellungAnsehen(int index);
+
+        /// <summary>
+        ///     Öffnet eine <see cref="IViewBestellposition" /> mit der angegebene
+        ///     <see cref="Bestellposition.Bestellpositionsnummer" />
+        /// </summary>
+        /// <param name="nummer">Die <see cref="Bestellposition.Bestellpositionsnummer" /></param>
+        void BestellungMitNummerÖffnen(int nummer);
+
+        /// <summary>
+        ///     Erstellt eine neue <see cref="Bestellposition" /> in der Datenbank und öffnet eine
+        ///     <see cref="IViewBestellposition" />
+        /// </summary>
+        void NeueBestellungErstellen();
+
+        /// <summary>
+        ///     Öffnet eine <see cref="IViewBestellposition" /> für den <paramref name="bestellposition" />
+        /// </summary>
+        /// <param name="bestellposition">
+        ///     Die <see cref="Bestellposition" /> für den eine <see cref="IViewBestellposition" /> geöffnet werden soll
+        /// </param>
+        void BestellungAnsehen(Bestellposition bestellposition);
+
+        /// <summary>
+        ///     Aktualisiert die Bestellungliste auf der <see cref="IViewBestellposition" />
+        /// </summary>
+        void BestellungListeAktualisieren();
 
         #endregion
     }

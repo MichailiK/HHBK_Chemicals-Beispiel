@@ -60,7 +60,18 @@
         <Compile Include="Kunden\ViewKunde.Designer.cs">
           <DependentUpon>ViewKunde.cs</DependentUpon>
         </Compile>
-        <Compile Include="Lager\Bestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\Bestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\ControllerBestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\IControllerBestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\IModelBestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\IViewBestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\ModelBestellposition.cs" />
+        <Compile Include="Lager\Bestellposition\ViewBestellposition.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Lager\Bestellposition\ViewBestellposition.Designer.cs">
+          <DependentUpon>ViewBestellposition.cs</DependentUpon>
+        </Compile>
         <Compile Include="Lager\Lagerposition.cs" />
         <Compile Include="Lager\Lagerposition_has_Rezept.cs" />
         <Compile Include="Lager\Lieferposition\ControllerLieferposition.cs" />
@@ -118,6 +129,9 @@
         <Compile Include="Zahlung\Zahlungseingang.cs" />
         <EmbeddedResource Include="Kunden\ViewKunde.resx">
           <DependentUpon>ViewKunde.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Lager\Bestellposition\ViewBestellposition.resx">
+          <DependentUpon>ViewBestellposition.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Lager\Lieferposition\ViewLieferposition.resx">
           <DependentUpon>ViewLieferposition.cs</DependentUpon>

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
 using HHBK_Chemicals_ERP_CS.Kunden;
-using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
+using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main
@@ -14,6 +14,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
         private const int MaxPreviewEntries = 250;
 
         private readonly IDatenbank _datenbank;
+        private List<Bestellposition> _bestellungListe;
 
         private List<Kunde> _kundenListe;
         private List<Lieferposition> _lieferungListe;
@@ -227,6 +228,54 @@ namespace HHBK_Chemicals_ERP_CS.Main
                 _lieferungListe.Select(
                     lieferung => lieferung.Id + ": " + lieferung.Liefernummer + " (" +
                                  lieferung.Versanddatum.ToString("dd.MM.yyyy") + ")"));
+        }
+
+        #endregion
+
+        #region Bestellung
+
+        public void GeklickteBestellungAnsehen(int index)
+        {
+            BestellungAnsehen(_bestellungListe[index]);
+        }
+
+        public void BestellungMitNummerÖffnen(int nummer)
+        {
+            var bestellung = _datenbank.GetBestellposition(nummer);
+            if (bestellung == null)
+                MessageBox.Show("Das Bestellung konnte nicht gefunden werden", "Bestellung nicht gefunden",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+                BestellungAnsehen(bestellung);
+        }
+
+        public void NeueBestellungErstellen()
+        {
+            BestellungAnsehen(_datenbank.CreateBestellposition());
+        }
+
+        public void BestellungAnsehen(Bestellposition bestellposition)
+        {
+            var viewBestellung = new ViewBestellposition();
+            var modelBestellung = new ModelBestellposition(_datenbank, bestellposition);
+            var controllerBestellung = new ControllerBestellposition(modelBestellung);
+
+            viewBestellung.Controller = controllerBestellung;
+            controllerBestellung.ModelBestellposition = modelBestellung;
+            modelBestellung.ViewBestellposition = viewBestellung;
+
+            viewBestellung.ShowDialog();
+
+            BestellungListeAktualisieren();
+        }
+
+        public void BestellungListeAktualisieren()
+        {
+            _bestellungListe = _datenbank.GetBestellpositionen().Take(MaxPreviewEntries).ToList();
+            ViewMain.BestellungListeAktualisieren(
+                _bestellungListe.Select(
+                    bestellung => bestellung.Bestellpositionsnummer + ": " + bestellung.Bestellungsnummer));
         }
 
         #endregion

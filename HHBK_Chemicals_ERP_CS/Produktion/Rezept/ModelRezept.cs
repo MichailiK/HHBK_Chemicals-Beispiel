@@ -22,9 +22,11 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         {
             var produkt = _datenbank.GetProdukt(artikelnummer);
             if (produkt == null)
+            {
                 MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
             else
             {
                 var viewProdukt = new ViewProdukt();

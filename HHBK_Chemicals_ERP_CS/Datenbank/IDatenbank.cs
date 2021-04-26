@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using HHBK_Chemicals_ERP_CS.Kunden;
-using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
+using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Datenbank
@@ -201,6 +201,60 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         /// </summary>
         /// <param name="lieferposition">Das <see cref="Lieferposition" /> der aktualisiert werden soll</param>
         void UpdateLieferposition(Lieferposition lieferposition);
+
+        #endregion
+
+
+        #region Bestellposition
+
+        /// <summary>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition" />en aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <returns>Einen <see cref="IEnumerable{T}" /> von Bestellpositionen</returns>
+        IEnumerable<Bestellposition> GetBestellpositionen();
+
+        /// <summary>
+        ///     Holt eine spezifische <see cref="Bestellposition" /> aus der <see cref="IDatenbank" /> mit der
+        ///     <see cref="Bestellposition.Bestellpositionsnummer" />
+        /// </summary>
+        /// <param name="artikelnummer">
+        ///     Die <see cref="Bestellposition.Bestellpositionsnummer" /> der
+        ///     <see cref="Bestellposition" />s
+        /// </param>
+        /// <returns>
+        ///     Eine <see cref="Bestellposition" /> mit dieser <see cref="Bestellposition.Bestellpositionsnummer" />, oder
+        ///     <c>null</c>
+        ///     falls solch eine Bestellposition nicht existiert
+        /// </returns>
+        Bestellposition GetBestellposition(int artikelnummer);
+
+        /// <summary>
+        ///     Löscht eine <see cref="Bestellposition" /> aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="bestellposition">Die Bestellposition, die gelöscht werden soll</param>
+        /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
+        bool DeleteBestellposition(Bestellposition bestellposition);
+
+        /// <summary>
+        ///     Löscht eine <see cref="Bestellposition" /> aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="artikelnummer">
+        ///     Die <see cref="Bestellposition.Bestellpositionsnummer" /> des <see cref="Bestellposition" />
+        /// </param>
+        /// <returns><c>true</c>, falls die Löschung erfolgreich abgeschlossen ist. Andernfalls <c>false</c></returns>
+        bool DeleteBestellposition(int artikelnummer);
+
+        /// <summary>
+        ///     Erstellt eine neue <see cref="Bestellposition" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
+        /// </summary>
+        /// <returns>Das neu erstellte <see cref="Bestellposition" /></returns>
+        Bestellposition CreateBestellposition();
+
+        /// <summary>
+        ///     Aktualisiert ein <see cref="Bestellposition" /> mit den neuen Daten auf der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="bestellposition">Das <see cref="Bestellposition" /> der aktualisiert werden soll</param>
+        void UpdateBestellposition(Bestellposition bestellposition);
 
         #endregion
     }

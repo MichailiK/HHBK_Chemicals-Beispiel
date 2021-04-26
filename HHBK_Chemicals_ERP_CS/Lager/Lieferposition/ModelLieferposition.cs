@@ -1,6 +1,6 @@
 using HHBK_Chemicals_ERP_CS.Datenbank;
 
-namespace HHBK_Chemicals_ERP_CS.Lager.Lieferposition
+namespace HHBK_Chemicals_ERP_CS.Lager
 {
     /// <inheritdoc cref="IModelLieferposition" />
     public class ModelLieferposition : IModelLieferposition

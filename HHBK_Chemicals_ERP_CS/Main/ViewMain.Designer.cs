@@ -33,6 +33,7 @@
             System.Windows.Forms.Label d_produktAufrufenLabel;
             System.Windows.Forms.Label d_rezeptAufrufenLabel;
             System.Windows.Forms.Label d_lieferungAufrufenLabel;
+            System.Windows.Forms.Label d_bestellungAufrufenLabel;
             this.kundeGroupBox = new System.Windows.Forms.GroupBox();
             this.neuenKundeButton = new System.Windows.Forms.Button();
             this.kundeNummerAufrufenButton = new System.Windows.Forms.Button();
@@ -50,21 +51,29 @@
             this.rezeptListBox = new System.Windows.Forms.ListBox();
             this.lieferungGroupBox = new System.Windows.Forms.GroupBox();
             this.neueLieferungButton = new System.Windows.Forms.Button();
-            this.lieferPositionAufrufenButton = new System.Windows.Forms.Button();
+            this.lieferpositionAufrufenButton = new System.Windows.Forms.Button();
             this.lieferpositionAufrufenNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.lieferungListBox = new System.Windows.Forms.ListBox();
+            this.bestellungenGroupBox = new System.Windows.Forms.GroupBox();
+            this.neueBestellungButton = new System.Windows.Forms.Button();
+            this.bestellungAufrufenButton = new System.Windows.Forms.Button();
+            this.bestellungAufrufenNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.bestellungenListBox = new System.Windows.Forms.ListBox();
             d_kundenAufrufenLabel = new System.Windows.Forms.Label();
             d_produktAufrufenLabel = new System.Windows.Forms.Label();
             d_rezeptAufrufenLabel = new System.Windows.Forms.Label();
             d_lieferungAufrufenLabel = new System.Windows.Forms.Label();
+            d_bestellungAufrufenLabel = new System.Windows.Forms.Label();
             this.kundeGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kundenNummerAufrufenNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.kundenNummerAufrufenNumericUpDown)).BeginInit();
             this.produkteGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produktNummerAufrufenNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.produktNummerAufrufenNumericUpDown)).BeginInit();
             this.rezeptGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rezeptNummerAufrufenNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rezeptNummerAufrufenNumericUpDown)).BeginInit();
             this.lieferungGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lieferpositionAufrufenNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.lieferpositionAufrufenNumericUpDown)).BeginInit();
+            this.bestellungenGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.bestellungAufrufenNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // d_kundenAufrufenLabel
@@ -90,6 +99,22 @@
             d_rezeptAufrufenLabel.Size = new System.Drawing.Size(188, 21);
             d_rezeptAufrufenLabel.TabIndex = 15;
             d_rezeptAufrufenLabel.Text = "Rezeptnummer aufrufen";
+            // 
+            // d_lieferungAufrufenLabel
+            // 
+            d_lieferungAufrufenLabel.Location = new System.Drawing.Point(6, 512);
+            d_lieferungAufrufenLabel.Name = "d_lieferungAufrufenLabel";
+            d_lieferungAufrufenLabel.Size = new System.Drawing.Size(188, 21);
+            d_lieferungAufrufenLabel.TabIndex = 21;
+            d_lieferungAufrufenLabel.Text = "Lieferposition aufrufen";
+            // 
+            // d_bestellungAufrufenLabel
+            // 
+            d_bestellungAufrufenLabel.Location = new System.Drawing.Point(6, 512);
+            d_bestellungAufrufenLabel.Name = "d_bestellungAufrufenLabel";
+            d_bestellungAufrufenLabel.Size = new System.Drawing.Size(188, 21);
+            d_bestellungAufrufenLabel.TabIndex = 27;
+            d_bestellungAufrufenLabel.Text = "Bestellung aufrufen";
             // 
             // kundeGroupBox
             // 
@@ -128,11 +153,7 @@
             // kundenNummerAufrufenNumericUpDown
             // 
             this.kundenNummerAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 536);
-            this.kundenNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
+            this.kundenNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
             this.kundenNummerAufrufenNumericUpDown.Name = "kundenNummerAufrufenNumericUpDown";
             this.kundenNummerAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.kundenNummerAufrufenNumericUpDown.TabIndex = 4;
@@ -184,11 +205,7 @@
             // produktNummerAufrufenNumericUpDown
             // 
             this.produktNummerAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 536);
-            this.produktNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
+            this.produktNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
             this.produktNummerAufrufenNumericUpDown.Name = "produktNummerAufrufenNumericUpDown";
             this.produktNummerAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.produktNummerAufrufenNumericUpDown.TabIndex = 10;
@@ -240,11 +257,7 @@
             // rezeptNummerAufrufenNumericUpDown
             // 
             this.rezeptNummerAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 536);
-            this.rezeptNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
+            this.rezeptNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
             this.rezeptNummerAufrufenNumericUpDown.Name = "rezeptNummerAufrufenNumericUpDown";
             this.rezeptNummerAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.rezeptNummerAufrufenNumericUpDown.TabIndex = 16;
@@ -262,7 +275,7 @@
             // lieferungGroupBox
             // 
             this.lieferungGroupBox.Controls.Add(this.neueLieferungButton);
-            this.lieferungGroupBox.Controls.Add(this.lieferPositionAufrufenButton);
+            this.lieferungGroupBox.Controls.Add(this.lieferpositionAufrufenButton);
             this.lieferungGroupBox.Controls.Add(d_lieferungAufrufenLabel);
             this.lieferungGroupBox.Controls.Add(this.lieferpositionAufrufenNumericUpDown);
             this.lieferungGroupBox.Controls.Add(this.lieferungListBox);
@@ -283,32 +296,20 @@
             this.neueLieferungButton.UseVisualStyleBackColor = true;
             this.neueLieferungButton.Click += new System.EventHandler(this.neueLieferungButton_Click);
             // 
-            // lieferPositionAufrufenButton
+            // lieferpositionAufrufenButton
             // 
-            this.lieferPositionAufrufenButton.Location = new System.Drawing.Point(132, 536);
-            this.lieferPositionAufrufenButton.Name = "lieferPositionAufrufenButton";
-            this.lieferPositionAufrufenButton.Size = new System.Drawing.Size(62, 20);
-            this.lieferPositionAufrufenButton.TabIndex = 23;
-            this.lieferPositionAufrufenButton.Text = "Los";
-            this.lieferPositionAufrufenButton.UseVisualStyleBackColor = true;
-            this.lieferPositionAufrufenButton.Click += new System.EventHandler(this.lieferungNummerAufrufenButton_Click);
-            // 
-            // d_lieferungAufrufenLabel
-            // 
-            d_lieferungAufrufenLabel.Location = new System.Drawing.Point(6, 512);
-            d_lieferungAufrufenLabel.Name = "d_lieferungAufrufenLabel";
-            d_lieferungAufrufenLabel.Size = new System.Drawing.Size(188, 21);
-            d_lieferungAufrufenLabel.TabIndex = 21;
-            d_lieferungAufrufenLabel.Text = "Lieferposition aufrufen";
+            this.lieferpositionAufrufenButton.Location = new System.Drawing.Point(132, 536);
+            this.lieferpositionAufrufenButton.Name = "lieferpositionAufrufenButton";
+            this.lieferpositionAufrufenButton.Size = new System.Drawing.Size(62, 20);
+            this.lieferpositionAufrufenButton.TabIndex = 23;
+            this.lieferpositionAufrufenButton.Text = "Los";
+            this.lieferpositionAufrufenButton.UseVisualStyleBackColor = true;
+            this.lieferpositionAufrufenButton.Click += new System.EventHandler(this.lieferungNummerAufrufenButton_Click);
             // 
             // lieferpositionAufrufenNumericUpDown
             // 
             this.lieferpositionAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 536);
-            this.lieferpositionAufrufenNumericUpDown.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
+            this.lieferpositionAufrufenNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
             this.lieferpositionAufrufenNumericUpDown.Name = "lieferpositionAufrufenNumericUpDown";
             this.lieferpositionAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.lieferpositionAufrufenNumericUpDown.TabIndex = 22;
@@ -323,11 +324,64 @@
             this.lieferungListBox.DoubleClick += new System.EventHandler(this.lieferungenListBox_DoubleClick);
             this.lieferungListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lieferungenListBox_KeyUp);
             // 
+            // bestellungenGroupBox
+            // 
+            this.bestellungenGroupBox.Controls.Add(this.neueBestellungButton);
+            this.bestellungenGroupBox.Controls.Add(this.bestellungAufrufenButton);
+            this.bestellungenGroupBox.Controls.Add(d_bestellungAufrufenLabel);
+            this.bestellungenGroupBox.Controls.Add(this.bestellungAufrufenNumericUpDown);
+            this.bestellungenGroupBox.Controls.Add(this.bestellungenListBox);
+            this.bestellungenGroupBox.Location = new System.Drawing.Point(836, 12);
+            this.bestellungenGroupBox.Name = "bestellungenGroupBox";
+            this.bestellungenGroupBox.Size = new System.Drawing.Size(200, 570);
+            this.bestellungenGroupBox.TabIndex = 24;
+            this.bestellungenGroupBox.TabStop = false;
+            this.bestellungenGroupBox.Text = "Bestellungen";
+            // 
+            // neueBestellungButton
+            // 
+            this.neueBestellungButton.Location = new System.Drawing.Point(6, 471);
+            this.neueBestellungButton.Name = "neueBestellungButton";
+            this.neueBestellungButton.Size = new System.Drawing.Size(188, 23);
+            this.neueBestellungButton.TabIndex = 26;
+            this.neueBestellungButton.Text = "Neu ...";
+            this.neueBestellungButton.UseVisualStyleBackColor = true;
+            this.neueBestellungButton.Click += new System.EventHandler(this.neueBestellungButton_Click);
+            // 
+            // bestellungAufrufenButton
+            // 
+            this.bestellungAufrufenButton.Location = new System.Drawing.Point(132, 536);
+            this.bestellungAufrufenButton.Name = "bestellungAufrufenButton";
+            this.bestellungAufrufenButton.Size = new System.Drawing.Size(62, 20);
+            this.bestellungAufrufenButton.TabIndex = 29;
+            this.bestellungAufrufenButton.Text = "Los";
+            this.bestellungAufrufenButton.UseVisualStyleBackColor = true;
+            this.bestellungAufrufenButton.Click += new System.EventHandler(this.bestellungNummerAufrufenButton_Click);
+            // 
+            // bestellungAufrufenNumericUpDown
+            // 
+            this.bestellungAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 536);
+            this.bestellungAufrufenNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.bestellungAufrufenNumericUpDown.Name = "bestellungAufrufenNumericUpDown";
+            this.bestellungAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.bestellungAufrufenNumericUpDown.TabIndex = 28;
+            // 
+            // bestellungenListBox
+            // 
+            this.bestellungenListBox.FormattingEnabled = true;
+            this.bestellungenListBox.Location = new System.Drawing.Point(6, 19);
+            this.bestellungenListBox.Name = "bestellungenListBox";
+            this.bestellungenListBox.Size = new System.Drawing.Size(188, 446);
+            this.bestellungenListBox.TabIndex = 25;
+            this.bestellungenListBox.DoubleClick += new System.EventHandler(this.bestellungenListBox_DoubleClick);
+            this.bestellungenListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.bestellungenListBox_KeyUp);
+            // 
             // ViewMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 594);
+            this.ClientSize = new System.Drawing.Size(1048, 594);
+            this.Controls.Add(this.bestellungenGroupBox);
             this.Controls.Add(this.lieferungGroupBox);
             this.Controls.Add(this.rezeptGroupBox);
             this.Controls.Add(this.produkteGroupBox);
@@ -336,15 +390,16 @@
             this.Text = "HHBK Chemicals";
             this.Load += new System.EventHandler(this.ViewMain_Load);
             this.kundeGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kundenNummerAufrufenNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.kundenNummerAufrufenNumericUpDown)).EndInit();
             this.produkteGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.produktNummerAufrufenNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.produktNummerAufrufenNumericUpDown)).EndInit();
             this.rezeptGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rezeptNummerAufrufenNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rezeptNummerAufrufenNumericUpDown)).EndInit();
             this.lieferungGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lieferpositionAufrufenNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.lieferpositionAufrufenNumericUpDown)).EndInit();
+            this.bestellungenGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.bestellungAufrufenNumericUpDown)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         private System.Windows.Forms.GroupBox rezeptGroupBox;
@@ -372,8 +427,13 @@
 
         private System.Windows.Forms.GroupBox lieferungGroupBox;
         private System.Windows.Forms.Button neueLieferungButton;
-        private System.Windows.Forms.Button lieferPositionAufrufenButton;
+        private System.Windows.Forms.Button lieferpositionAufrufenButton;
         private System.Windows.Forms.NumericUpDown lieferpositionAufrufenNumericUpDown;
         private System.Windows.Forms.ListBox lieferungListBox;
+        private System.Windows.Forms.GroupBox bestellungenGroupBox;
+        private System.Windows.Forms.Button neueBestellungButton;
+        private System.Windows.Forms.Button bestellungAufrufenButton;
+        private System.Windows.Forms.NumericUpDown bestellungAufrufenNumericUpDown;
+        private System.Windows.Forms.ListBox bestellungenListBox;
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace HHBK_Chemicals_ERP_CS.Lager.Lieferposition
+namespace HHBK_Chemicals_ERP_CS.Lager
 {
     /// <summary>
     ///     Repräsentiert eine Lieferung

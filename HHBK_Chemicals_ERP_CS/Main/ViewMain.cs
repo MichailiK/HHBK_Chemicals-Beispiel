@@ -39,6 +39,12 @@ namespace HHBK_Chemicals_ERP_CS.Main
             lieferungListBox.Items.AddRange(namen.Cast<object>().ToArray());
         }
 
+        public void BestellungListeAktualisieren(IEnumerable<string> namen)
+        {
+            bestellungenListBox.Items.Clear();
+            bestellungenListBox.Items.AddRange(namen.Cast<object>().ToArray());
+        }
+
         #region Events
 
         private void ViewMain_Load(object sender, EventArgs e)
@@ -150,6 +156,33 @@ namespace HHBK_Chemicals_ERP_CS.Main
         private void neueLieferungButton_Click(object sender, EventArgs e)
         {
             Controller.NeueLieferungErstellen();
+        }
+
+        #endregion
+
+        #region Bestellung
+
+        private void bestellungenListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Controller.BestellungGeklickt(bestellungenListBox.SelectedIndex);
+        }
+
+        private void bestellungenListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Controller.BestellungGeklickt(bestellungenListBox.SelectedIndex);
+        }
+
+
+        private void bestellungNummerAufrufenButton_Click(object sender, EventArgs e)
+        {
+            Controller.BestellungMitNummerÖffnen((int) bestellungAufrufenNumericUpDown.Value);
+        }
+
+
+        private void neueBestellungButton_Click(object sender, EventArgs e)
+        {
+            Controller.NeueBestellungErstellen();
         }
 
         #endregion

@@ -1,4 +1,4 @@
-namespace HHBK_Chemicals_ERP_CS.Lager.Lieferposition
+namespace HHBK_Chemicals_ERP_CS.Lager
 {
     /// <inheritdoc cref="IControllerLieferposition" />
     public class ControllerLieferposition : IControllerLieferposition

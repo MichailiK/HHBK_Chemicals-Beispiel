@@ -15,20 +15,13 @@ namespace HHBK_Chemicals_ERP_CS.Lager
         /// <remarks>Dies ist der Primärschlüssel auf der Datenbank</remarks>
         public readonly int Bestellpositionsnummer;
 
-        /// <summary>
-        ///     Das <see cref="Produktion.Produkt" /> der <see cref="Bestellposition" />
-        /// </summary>
-        /// <remarks>Dies ist ein Fremdschlüssel, "Produkt_Artikelnummer1", auf der Datenbank</remarks>
-        /// <seealso cref="Produktion.Produkt" />
-        public Produkt Produkt;
-
         public Bestellposition(int bestellpositionsnummer,
             Produkt produkt,
             int bestellungsnummer,
             int menge,
             DateTimeOffset bestelldatum,
             Kunde kunde,
-            Lieferposition.Lieferposition lieferposition)
+            Lieferposition lieferposition)
         {
             Bestellpositionsnummer = bestellpositionsnummer;
             Produkt = produkt;
@@ -38,6 +31,13 @@ namespace HHBK_Chemicals_ERP_CS.Lager
             Kunde = kunde;
             Lieferposition = lieferposition;
         }
+
+        /// <summary>
+        ///     Das <see cref="Produktion.Produkt" /> der <see cref="Bestellposition" />
+        /// </summary>
+        /// <remarks>Dies ist ein Fremdschlüssel, "Produkt_Artikelnummer1", auf der Datenbank</remarks>
+        /// <seealso cref="Produktion.Produkt" />
+        public Produkt Produkt { get; set; }
 
         // TODO Bestellungsnummer dokumentieren
         public int Bestellungsnummer { get; set; }
@@ -53,10 +53,10 @@ namespace HHBK_Chemicals_ERP_CS.Lager
         public Kunde Kunde { get; set; }
 
         /// <summary>
-        ///     Der <see cref="Lager.Lieferposition.Lieferposition" /> der <see cref="Bestellposition" />
+        ///     Der <see cref="HHBK_Chemicals_ERP_CS.Lieferung.Lieferposition" /> der <see cref="Bestellposition" />.
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Lieferposition_idLieferposition", auf der Datenbank</remarks>
-        /// <seealso cref="Lager.Lieferposition.Lieferposition" />
-        public Lieferposition.Lieferposition Lieferposition { get; set; }
+        /// <seealso cref="HHBK_Chemicals_ERP_CS.Lieferung.Lieferposition" />
+        public Lieferposition Lieferposition { get; set; }
     }
 }

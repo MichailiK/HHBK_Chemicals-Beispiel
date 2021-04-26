@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using HHBK_Chemicals_ERP_CS.Kunden;
-using HHBK_Chemicals_ERP_CS.Lager.Lieferposition;
+using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Datenbank
@@ -12,6 +12,11 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
     /// <seealso cref="IDatenbank" />
     public class FakeDatenbank : IDatenbank
     {
+        /// <summary>
+        ///     Eine "Tabelle" für Bestellpositionen
+        /// </summary>
+        private readonly Dictionary<int, Bestellposition> _bestellpositionen;
+
         /// <summary>
         ///     Eine "Tabelle" für Kunden
         /// </summary>
@@ -36,14 +41,20 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         private readonly Dictionary<int, Rezept> _rezepte;
 
         /// <summary>
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Rezept" />e erhöht wird und
+        ///     als eine einzigartige <see cref="Rezept.RezeptNummer" /> verwendet wird
+        /// </summary>
+        private int _bestellPositionenAutoIncrementCount;
+
+        /// <summary>
         ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Kunde" />ns erhöht wird und
         ///     als eine einzigartige <see cref="Kunde.Kundennummer" /> verwendet wird
         /// </summary>
         private int _kundenAutoIncrementCount;
 
         /// <summary>
-        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Lieferposition" />en erhöht wird und
-        ///     als eine einzigartige <see cref="Lieferposition.Id" /> verwendet wird
+        ///     Ein "auto increment" Variable, welche bei jeder Erstellung eines <see cref="Lieferposition" />en erhöht
+        ///     wird und als eine einzigartige <see cref="Lieferposition.Id" /> verwendet wird
         /// </summary>
         private int _lieferPositionenAutoIncrementCount;
 
@@ -104,10 +115,30 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
                 {
                     3,
                     new Lieferposition(3, "789", DateTimeOffset.Now.AddDays(-1), DateTimeOffset.Now.AddHours(-16),
-                        "Hi-Speed(tm) Kontrolle", "Hi-Speed(tm) Spedition")
+                        "Speedy-Kontrolle", "Speedy-tion")
                 }
             };
             _lieferPositionenAutoIncrementCount = _lieferpositionen.Count;
+
+            _bestellpositionen = new Dictionary<int, Bestellposition>
+            {
+                {
+                    1,
+                    new Bestellposition(1, _produkte[1], 123, 1, DateTimeOffset.Now.AddDays(-2), _kunden[1],
+                        _lieferpositionen[1])
+                },
+                {
+                    2,
+                    new Bestellposition(2, _produkte[1], 456, 1, DateTimeOffset.Now.AddDays(-10), _kunden[3],
+                        _lieferpositionen[2])
+                },
+                {
+                    3,
+                    new Bestellposition(3, _produkte[2], 789, 1, DateTimeOffset.Now.AddDays(-1), _kunden[1],
+                        _lieferpositionen[3])
+                }
+            };
+            _bestellPositionenAutoIncrementCount = _bestellpositionen.Count;
         }
 
         #region Kunde
@@ -287,6 +318,52 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
                 _lieferpositionen.Remove(lieferposition.Id);
 
             _lieferpositionen.Add(lieferposition.Id, lieferposition);
+        }
+
+        #endregion
+
+        #region Bestellposition
+
+        public IEnumerable<Bestellposition> GetBestellpositionen()
+        {
+            return _bestellpositionen.Values;
+        }
+
+        public Bestellposition GetBestellposition(int artikelnummer)
+        {
+            return _bestellpositionen.TryGetValue(artikelnummer, out var bestellposition) ? bestellposition : null;
+        }
+
+        public bool DeleteBestellposition(Bestellposition bestellposition)
+        {
+            return DeleteBestellposition(bestellposition.Bestellpositionsnummer);
+        }
+
+        public bool DeleteBestellposition(int artikelnummer)
+        {
+            return _bestellpositionen.Remove(artikelnummer);
+        }
+
+        public Bestellposition CreateBestellposition()
+        {
+            var bestellposition = new Bestellposition(++_bestellPositionenAutoIncrementCount, null, 0, 0,
+                DateTimeOffset.Now, null, null);
+            AddOrUpdateBestellposition(bestellposition);
+            return bestellposition;
+        }
+
+        public void UpdateBestellposition(Bestellposition bestellposition)
+        {
+            AddOrUpdateBestellposition(bestellposition);
+        }
+
+
+        private void AddOrUpdateBestellposition(Bestellposition bestellposition)
+        {
+            if (_bestellpositionen.ContainsKey(bestellposition.Bestellpositionsnummer))
+                _bestellpositionen.Remove(bestellposition.Bestellpositionsnummer);
+
+            _bestellpositionen.Add(bestellposition.Bestellpositionsnummer, bestellposition);
         }
 
         #endregion

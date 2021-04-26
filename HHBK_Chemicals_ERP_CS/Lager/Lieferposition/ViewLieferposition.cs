@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace HHBK_Chemicals_ERP_CS.Lager.Lieferposition
+namespace HHBK_Chemicals_ERP_CS.Lager
 {
     /// <inheritdoc cref="IViewLieferposition" />
     public partial class ViewLieferposition : Form, IViewLieferposition
@@ -10,6 +10,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager.Lieferposition
         {
             InitializeComponent();
 
+            versanddatumDateTimePicker.Value = DateTime.Now;
             lieferdatumDateTimePicker.Value = DateTime.Now;
         }
 

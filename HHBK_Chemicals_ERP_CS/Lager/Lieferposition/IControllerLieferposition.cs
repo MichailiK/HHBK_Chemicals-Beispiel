@@ -1,4 +1,4 @@
-namespace HHBK_Chemicals_ERP_CS.Lager.Lieferposition
+namespace HHBK_Chemicals_ERP_CS.Lager
 {
     /// <summary>
     ///     Repräsentiert den Controller für <see cref="IModelLieferposition" />
