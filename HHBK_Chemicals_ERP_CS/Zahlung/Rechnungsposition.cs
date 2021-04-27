@@ -1,3 +1,4 @@
+using System;
 using HHBK_Chemicals_ERP_CS.Kunden;
 using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
@@ -37,6 +38,7 @@ namespace HHBK_Chemicals_ERP_CS.Zahlung
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Produkt_Artikelnummer1", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Produkt" />
+        [Obsolete("Dieses Feld zu benutzen kann zu Daten-Anomalien führen, benutzte Bestellposition.Produkt stattdessen")]
         public Produkt Produkt { get; set; }
 
         /// <summary>
@@ -44,6 +46,7 @@ namespace HHBK_Chemicals_ERP_CS.Zahlung
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Kunde_Kundennummer", auf der Datenbank</remarks>
         /// <seealso cref="Kunden.Kunde" />
+        [Obsolete("Dieses Feld zu benutzen kann zu Daten-Anomalien führen, benutzte Bestellposition.Kunde stattdessen")]
         public Kunde Kunde { get; set; }
     }
 }
