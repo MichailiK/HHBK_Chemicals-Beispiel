@@ -12,7 +12,8 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         /// <remarks>Dies ist der Primärschlüssel auf der Datenbank</remarks>
         public readonly int Produktionspositionsnummer;
 
-        [Obsolete("Dieser Konstruktor setzt Felder, welche zu Daten-Anomalien führen kann. Benutze stattdessen den anderen Konstruktor")]
+        [Obsolete(
+            "Dieser Konstruktor setzt Felder, welche zu Daten-Anomalien führen kann. Benutze stattdessen den anderen Konstruktor")]
         public Produktionsposition(int produktionspositionsnummer, Produkt produkt,
             DateTimeOffset datumProduktionsfreigabe, DateTimeOffset datumProduktion, string nameProduktionsfreigabe,
             string nameProduzent, Bestellposition bestellposition, Kunde kunde)
@@ -26,7 +27,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             Bestellposition = bestellposition;
             Kunde = kunde;
         }
-        
+
         public Produktionsposition(int produktionspositionsnummer,
             DateTimeOffset datumProduktionsfreigabe, DateTimeOffset datumProduktion, string nameProduktionsfreigabe,
             string nameProduzent, Bestellposition bestellposition)
@@ -44,7 +45,8 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Produkt_Artikelnummer", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Produkt" />
-        [Obsolete("Dieses Feld zu benutzen kann zu Daten-Anomalien führen, benutzte Bestellposition.Produkt stattdessen")]
+        [Obsolete(
+            "Dieses Feld zu benutzen kann zu Daten-Anomalien führen, benutzte Bestellposition.Produkt stattdessen")]
         public Produkt Produkt { get; set; }
 
         // TODO "DatumProduktionsfreigabe" dokumentieren

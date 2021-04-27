@@ -157,7 +157,6 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             Controller.NeueBestellungErstellen();
         }
 
-
         #endregion
 
         #endregion

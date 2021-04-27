@@ -59,21 +59,21 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         void UpdateKunde(Kunde kunde);
 
         /// <summary>
-        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition"/> eines <see cref="Kunde" />n
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition" /> eines <see cref="Kunde" />n
         ///     aus der <see cref="IDatenbank" />
         /// </summary>
         /// <returns>Eine <see cref="IEnumerable{T}" /> von Bestellpositionen des Kunden</returns>
-        /// <param name="kunde">Der <see cref="Kunde"/></param>
+        /// <param name="kunde">Der <see cref="Kunde" /></param>
         /// <exception cref="System.ArgumentException">
-        ///     Die <see cref="Kunde.Kundennummer"/> existiert nicht auf der Datenbank.
+        ///     Die <see cref="Kunde.Kundennummer" /> existiert nicht auf der Datenbank.
         /// </exception>
         IEnumerable<Bestellposition> GetBestellungenVonKunde(Kunde kunde);
 
         /// <summary>
-        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition"/> eines <see cref="Kunde" />n
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition" /> eines <see cref="Kunde" />n
         ///     aus der <see cref="IDatenbank" />
         /// </summary>
-        /// <param name="kundennummer">Die <see cref="Kunde.Kundennummer"/> des Kunden</param>
+        /// <param name="kundennummer">Die <see cref="Kunde.Kundennummer" /> des Kunden</param>
         /// <returns>
         ///     Eine <see cref="IEnumerable{T}" /> von Bestellpositionen des Kunden, oder <c>null</c>, falls solch
         ///     ein Kunde nicht existiert.

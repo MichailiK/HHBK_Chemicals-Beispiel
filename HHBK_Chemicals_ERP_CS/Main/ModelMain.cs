@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
 using HHBK_Chemicals_ERP_CS.Kunden;
-using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main

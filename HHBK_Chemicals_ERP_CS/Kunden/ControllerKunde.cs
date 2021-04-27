@@ -1,5 +1,3 @@
-using HHBK_Chemicals_ERP_CS.LegacyMain;
-
 namespace HHBK_Chemicals_ERP_CS.Kunden
 {
     /// <inheritdoc cref="IControllerKunde" />
@@ -25,7 +23,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
         public void FormGeladen()
         {
             ModelKunde.KundeZurücksetzen();
-            ModelKunde.BestellungListeAktualisieren();;
+            ModelKunde.BestellungListeAktualisieren();
         }
 
         #region Bestellung

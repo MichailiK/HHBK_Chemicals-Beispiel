@@ -1,5 +1,4 @@
 using HHBK_Chemicals_ERP_CS.Kunden;
-using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
 
 namespace HHBK_Chemicals_ERP_CS.Main

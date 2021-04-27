@@ -38,7 +38,8 @@ namespace HHBK_Chemicals_ERP_CS.Zahlung
         /// </summary>
         /// <remarks>Dies ist ein Fremdschlüssel, "Bestellposition_Produkt_Artikelnummer1", auf der Datenbank</remarks>
         /// <seealso cref="Produktion.Produkt" />
-        [Obsolete("Dieses Feld zu benutzen kann zu Daten-Anomalien führen, benutzte Bestellposition.Produkt stattdessen")]
+        [Obsolete(
+            "Dieses Feld zu benutzen kann zu Daten-Anomalien führen, benutzte Bestellposition.Produkt stattdessen")]
         public Produkt Produkt { get; set; }
 
         /// <summary>

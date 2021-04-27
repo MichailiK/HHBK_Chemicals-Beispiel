@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
-using HHBK_Chemicals_ERP_CS.Main;
+using HHBK_Chemicals_ERP_CS.LegacyMain;
 
 namespace HHBK_Chemicals_ERP_CS
 {
@@ -21,9 +21,9 @@ namespace HHBK_Chemicals_ERP_CS
 
             if (args.Contains("--legacyview"))
             {
-                var viewMain = new LegacyMain.ViewMain();
-                var controllerMain = new LegacyMain.ControllerMain();
-                var modelMain = new LegacyMain.ModelMain(datenbank);
+                var viewMain = new ViewMain();
+                var controllerMain = new ControllerMain();
+                var modelMain = new ModelMain(datenbank);
 
                 viewMain.Controller = controllerMain;
                 controllerMain.ModelMain = modelMain;
@@ -33,9 +33,9 @@ namespace HHBK_Chemicals_ERP_CS
             }
             else
             {
-                var viewMain = new ViewMain();
-                var controllerMain = new ControllerMain();
-                var modelMain = new ModelMain(datenbank);
+                var viewMain = new Main.ViewMain();
+                var controllerMain = new Main.ControllerMain();
+                var modelMain = new Main.ModelMain(datenbank);
 
                 viewMain.Controller = controllerMain;
                 controllerMain.ModelMain = modelMain;

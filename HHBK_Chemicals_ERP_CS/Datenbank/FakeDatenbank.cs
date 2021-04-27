@@ -190,6 +190,7 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         {
             return GetBestellungenVonKunde(kunde.Kundennummer);
         }
+
         public IEnumerable<Bestellposition> GetBestellungenVonKunde(int kundennummer)
         {
             return _kunden.ContainsKey(kundennummer)

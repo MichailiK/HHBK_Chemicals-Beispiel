@@ -16,7 +16,9 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         /// <remarks>Dies ist der Primärschlüssel auf der Datenbank</remarks>
         public readonly int Produktionsplannummer;
 
-        [Obsolete("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden.", true)]
+        [Obsolete(
+            "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden. Benutze stattdessen den anderen Konstruktor",
+            true)]
         public Produktionsplan(int produktionsplannummer,
             DateTimeOffset startSoll,
             DateTimeOffset startIst,
@@ -33,7 +35,7 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             Bestellposition = bestellposition;
             Kunde = kunde;
         }
-        
+
         public Produktionsplan(int produktionsplannummer,
             DateTimeOffset startSoll,
             DateTimeOffset startIst,
@@ -66,8 +68,10 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
             "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden.")]
         public Produktionsposition Produktionsposition
         {
-            get => throw new NotSupportedException("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktionsposition angegeben werden.");
-            set => throw new NotSupportedException("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktionsposition angegeben werden.");
+            get => throw new NotSupportedException(
+                "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktionsposition angegeben werden.");
+            set => throw new NotSupportedException(
+                "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktionsposition angegeben werden.");
         }
 
         /// <summary>
@@ -78,11 +82,14 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         ///     Datenbank
         /// </remarks>
         /// <seealso cref="Lager.Bestellposition" />
-        [Obsolete("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden.")]
+        [Obsolete(
+            "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden.")]
         public Bestellposition Bestellposition
         {
-            get => throw new NotSupportedException("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Bestellposition angegeben werden.");
-            set => throw new NotSupportedException("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Bestellposition angegeben werden.");
+            get => throw new NotSupportedException(
+                "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Bestellposition angegeben werden.");
+            set => throw new NotSupportedException(
+                "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Bestellposition angegeben werden.");
         }
 
         /// <summary>
@@ -92,11 +99,14 @@ namespace HHBK_Chemicals_ERP_CS.Produktion
         ///     Dies ist ein Fremdschlüssel, "Produktionsposition_Bestellposition_Kunde_Kundenummer", auf der Datenbank
         /// </remarks>
         /// <seealso cref="Lager.Bestellposition" />
-        [Obsolete("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden.")]
+        [Obsolete(
+            "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann keine Produktposition, Bestellposition & Kunde angegeben werden.")]
         public Kunde Kunde
         {
-            get => throw new NotSupportedException("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann kein Kunde angegeben werden.");
-            set => throw new NotSupportedException("Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann kein Kunde angegeben werden.");
+            get => throw new NotSupportedException(
+                "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann kein Kunde angegeben werden.");
+            set => throw new NotSupportedException(
+                "Aufgrund der 1:1 Beziehung zwischen Produktionsplan und Rezept, kann kein Kunde angegeben werden.");
         }
     }
 }
