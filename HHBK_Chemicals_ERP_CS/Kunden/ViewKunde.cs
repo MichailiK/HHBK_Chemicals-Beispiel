@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace HHBK_Chemicals_ERP_CS.Kunden
@@ -125,6 +127,38 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
                     MessageBoxIcon.Error);
             }
         }
+
+        #region Bestellung
+
+        public void BestellungsListeAktualisieren(IEnumerable<string> namen)
+        {
+            bestellungListBox.Items.Clear();
+            bestellungListBox.Items.AddRange(namen.Cast<object>().ToArray());
+        }
+
+        private void bestellungListBox_DoubleClick(object sender, EventArgs e)
+        {
+            Controller.BestellungGeklickt(bestellungListBox.SelectedIndex);
+        }
+
+        private void bestellungListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Controller.BestellungGeklickt(bestellungListBox.SelectedIndex);
+        }
+
+        private void bestellungsNummerAufrufenButton_Click(object sender, EventArgs e)
+        {
+            Controller.BestellungMitNummerÖffnen((int) bestellungsNummerAufrufenNumericUpDown.Value);
+        }
+
+        private void neueBestellungButton_Click(object sender, EventArgs e)
+        {
+            Controller.NeueBestellungErstellen();
+        }
+
+
+        #endregion
 
         #endregion
     }

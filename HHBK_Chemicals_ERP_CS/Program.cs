@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
+using HHBK_Chemicals_ERP_CS.Main;
 
 namespace HHBK_Chemicals_ERP_CS
 {
@@ -32,7 +33,13 @@ namespace HHBK_Chemicals_ERP_CS
             }
             else
             {
-                var viewMain = new Main.ViewMain();
+                var viewMain = new ViewMain();
+                var controllerMain = new ControllerMain();
+                var modelMain = new ModelMain(datenbank);
+
+                viewMain.Controller = controllerMain;
+                controllerMain.ModelMain = modelMain;
+                modelMain.ViewMain = viewMain;
 
                 Application.Run(viewMain);
             }

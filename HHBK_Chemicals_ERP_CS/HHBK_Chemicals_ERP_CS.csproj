@@ -97,6 +97,11 @@
     <Compile Include="LegacyMain\ViewMain.Designer.cs">
       <DependentUpon>ViewMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\ControllerMain.cs" />
+    <Compile Include="Main\IControllerMain.cs" />
+    <Compile Include="Main\IModelMain.cs" />
+    <Compile Include="Main\IViewMain.cs" />
+    <Compile Include="Main\ModelMain.cs" />
     <Compile Include="Main\ViewMain.cs">
       <SubType>Form</SubType>
     </Compile>

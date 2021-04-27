@@ -58,6 +58,28 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         /// <param name="kunde">Der <see cref="Kunde" /> der aktualisiert werden soll</param>
         void UpdateKunde(Kunde kunde);
 
+        /// <summary>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition"/> eines <see cref="Kunde" />n
+        ///     aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <returns>Eine <see cref="IEnumerable{T}" /> von Bestellpositionen des Kunden</returns>
+        /// <param name="kunde">Der <see cref="Kunde"/></param>
+        /// <exception cref="System.ArgumentException">
+        ///     Die <see cref="Kunde.Kundennummer"/> existiert nicht auf der Datenbank.
+        /// </exception>
+        IEnumerable<Bestellposition> GetBestellungenVonKunde(Kunde kunde);
+
+        /// <summary>
+        ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition"/> eines <see cref="Kunde" />n
+        ///     aus der <see cref="IDatenbank" />
+        /// </summary>
+        /// <param name="kundennummer">Die <see cref="Kunde.Kundennummer"/> des Kunden</param>
+        /// <returns>
+        ///     Eine <see cref="IEnumerable{T}" /> von Bestellpositionen des Kunden, oder <c>null</c>, falls solch
+        ///     ein Kunde nicht existiert.
+        /// </returns>
+        IEnumerable<Bestellposition> GetBestellungenVonKunde(int kundennummer);
+
         #endregion
 
         #region Produkt
@@ -204,7 +226,6 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
 
         #endregion
 
-
         #region Bestellposition
 
         /// <summary>
@@ -249,6 +270,12 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         /// </summary>
         /// <returns>Das neu erstellte <see cref="Bestellposition" /></returns>
         Bestellposition CreateBestellposition();
+
+        /// <summary>
+        ///     Erstellt eine neue <see cref="Bestellposition" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
+        /// </summary>
+        /// <returns>Das neu erstellte <see cref="Bestellposition" /></returns>
+        Bestellposition CreateBestellposition(Kunde kunde);
 
         /// <summary>
         ///     Aktualisiert ein <see cref="Bestellposition" /> mit den neuen Daten auf der <see cref="IDatenbank" />

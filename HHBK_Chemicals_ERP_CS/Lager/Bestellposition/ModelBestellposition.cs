@@ -22,7 +22,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager
 
         public void ProduktÖffnen(int artikelnummer)
         {
-            var produkt = _datenbank.GetProdukt(ViewBestellposition.ArtikelNummer);
+            var produkt = _datenbank.GetProdukt(artikelnummer);
             if (produkt == null)
             {
                 MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden",
@@ -44,7 +44,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager
 
         public void KundeÖffnen(int kundennummer)
         {
-            var kunde = _datenbank.GetKunde(ViewBestellposition.LieferpositionId);
+            var kunde = _datenbank.GetKunde(kundennummer);
             if (kunde == null)
             {
                 MessageBox.Show("Der Kunde konnte nicht gefunden werden", "Kunde nicht gefunden",
@@ -66,7 +66,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager
 
         public void LieferpositionÖffnen(int lieferpositionId)
         {
-            var lieferung = _datenbank.GetLieferposition(ViewBestellposition.LieferpositionId);
+            var lieferung = _datenbank.GetLieferposition(lieferpositionId);
             if (lieferung == null)
             {
                 MessageBox.Show("Die Lieferung konnte nicht gefunden werden", "Lieferung nicht gefunden",
@@ -128,12 +128,12 @@ namespace HHBK_Chemicals_ERP_CS.Lager
         public void BestellpositionZurücksetzen()
         {
             ViewBestellposition.Bestellpositionsnummer = _bestellposition.Bestellpositionsnummer;
-            ViewBestellposition.ArtikelNummer = _bestellposition.Produkt.Artikelnummer;
+            ViewBestellposition.ArtikelNummer = _bestellposition.Produkt?.Artikelnummer ?? 0;
             ViewBestellposition.Bestellungsnummer = _bestellposition.Bestellungsnummer;
             ViewBestellposition.Menge = _bestellposition.Menge;
             ViewBestellposition.Bestelldatum = _bestellposition.Bestelldatum;
             ViewBestellposition.Kundennummer = _bestellposition.Kunde.Kundennummer;
-            ViewBestellposition.LieferpositionId = _bestellposition.Lieferposition.Id;
+            ViewBestellposition.LieferpositionId = _bestellposition.Lieferposition?.Id ?? 0;
         }
 
         public void BestellpositionLöschen()

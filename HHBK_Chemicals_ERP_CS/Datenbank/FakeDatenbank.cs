@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HHBK_Chemicals_ERP_CS.Kunden;
 using HHBK_Chemicals_ERP_CS.Lager;
 using HHBK_Chemicals_ERP_CS.Produktion;
@@ -184,6 +185,18 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
             _kunden.Add(kunde.Kundennummer, kunde);
         }
 
+
+        public IEnumerable<Bestellposition> GetBestellungenVonKunde(Kunde kunde)
+        {
+            return GetBestellungenVonKunde(kunde.Kundennummer);
+        }
+        public IEnumerable<Bestellposition> GetBestellungenVonKunde(int kundennummer)
+        {
+            return _kunden.ContainsKey(kundennummer)
+                ? _bestellpositionen.Values.Where(x => x.Kunde.Kundennummer == kundennummer)
+                : null;
+        }
+
         #endregion
 
         #region Produkt
@@ -348,6 +361,14 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         {
             var bestellposition = new Bestellposition(++_bestellPositionenAutoIncrementCount, null, 0, 0,
                 DateTimeOffset.Now, null, null);
+            AddOrUpdateBestellposition(bestellposition);
+            return bestellposition;
+        }
+
+        public Bestellposition CreateBestellposition(Kunde kunde)
+        {
+            var bestellposition = new Bestellposition(++_bestellPositionenAutoIncrementCount, null, 0, 0,
+                DateTimeOffset.Now, kunde, null);
             AddOrUpdateBestellposition(bestellposition);
             return bestellposition;
         }

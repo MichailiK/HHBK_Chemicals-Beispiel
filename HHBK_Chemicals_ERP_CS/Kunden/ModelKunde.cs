@@ -1,12 +1,19 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
+using HHBK_Chemicals_ERP_CS.Lager;
 
 namespace HHBK_Chemicals_ERP_CS.Kunden
 {
     /// <inheritdoc cref="IModelKunde" />
     public class ModelKunde : IModelKunde
     {
+        private const int MaxPreviewEntries = 50;
+
         private readonly IDatenbank _datenbank;
         private readonly Kunde _kunde;
+        private List<Bestellposition> _bestellungListe;
 
         public ModelKunde(IDatenbank datenbank, Kunde kunde)
         {
@@ -45,5 +52,53 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
         {
             _datenbank.DeleteKunde(_kunde);
         }
+
+        #region Bestellung
+
+        public void GeklickteBestellungAnsehen(int index)
+        {
+            BestellungAnsehen(_bestellungListe[index]);
+        }
+
+        public void BestellungMitNummerÖffnen(int nummer)
+        {
+            var bestellung = _datenbank.GetBestellposition(nummer);
+            if (bestellung == null)
+                MessageBox.Show("Das Bestellung konnte nicht gefunden werden", "Bestellung nicht gefunden",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+                BestellungAnsehen(bestellung);
+        }
+
+        public void NeueBestellungErstellen()
+        {
+            BestellungAnsehen(_datenbank.CreateBestellposition(_kunde));
+        }
+
+        public void BestellungAnsehen(Bestellposition bestellposition)
+        {
+            var viewBestellung = new ViewBestellposition();
+            var modelBestellung = new ModelBestellposition(_datenbank, bestellposition);
+            var controllerBestellung = new ControllerBestellposition(modelBestellung);
+
+            viewBestellung.Controller = controllerBestellung;
+            controllerBestellung.ModelBestellposition = modelBestellung;
+            modelBestellung.ViewBestellposition = viewBestellung;
+
+            viewBestellung.ShowDialog();
+
+            BestellungListeAktualisieren();
+        }
+
+        public void BestellungListeAktualisieren()
+        {
+            _bestellungListe = _datenbank.GetBestellungenVonKunde(_kunde).Take(MaxPreviewEntries).ToList();
+            ViewKunde.BestellungsListeAktualisieren(
+                _bestellungListe.Select(
+                    bestellung => bestellung.Bestellpositionsnummer + ": " + bestellung.Bestellungsnummer));
+        }
+
+        #endregion
     }
 }

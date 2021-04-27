@@ -39,6 +39,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             System.Windows.Forms.Label d_postleitzahlLabel;
             System.Windows.Forms.Label d_ortLabel;
             System.Windows.Forms.Label d_emailAdresseLabel;
+            System.Windows.Forms.Label d_bestellungAufrufenLabel;
             this.kundenNameLabel = new System.Windows.Forms.Label();
             this.kundennummerNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -51,6 +52,11 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             this.applyButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.bestellungenGroupBox = new System.Windows.Forms.GroupBox();
+            this.neueBestellungButton = new System.Windows.Forms.Button();
+            this.bestellungsNummerAufrufenButton = new System.Windows.Forms.Button();
+            this.bestellungsNummerAufrufenNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.bestellungListBox = new System.Windows.Forms.ListBox();
             d_kundenNummerLabel = new System.Windows.Forms.Label();
             d_nameLabel = new System.Windows.Forms.Label();
             d_vornameLabel = new System.Windows.Forms.Label();
@@ -59,9 +65,12 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             d_postleitzahlLabel = new System.Windows.Forms.Label();
             d_ortLabel = new System.Windows.Forms.Label();
             d_emailAdresseLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize) (this.kundennummerNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.hausnummerNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.postleitzahlNumericUpDown)).BeginInit();
+            d_bestellungAufrufenLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.kundennummerNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hausnummerNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postleitzahlNumericUpDown)).BeginInit();
+            this.bestellungenGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bestellungsNummerAufrufenNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // d_kundenNummerLabel
@@ -128,9 +137,17 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             d_emailAdresseLabel.TabIndex = 15;
             d_emailAdresseLabel.Text = "Email Adresse";
             // 
+            // d_bestellungAufrufenLabel
+            // 
+            d_bestellungAufrufenLabel.Location = new System.Drawing.Point(6, 224);
+            d_bestellungAufrufenLabel.Name = "d_bestellungAufrufenLabel";
+            d_bestellungAufrufenLabel.Size = new System.Drawing.Size(188, 21);
+            d_bestellungAufrufenLabel.TabIndex = 23;
+            d_bestellungAufrufenLabel.Text = "Bestellungsnummer aufrufen";
+            // 
             // kundenNameLabel
             // 
-            this.kundenNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.kundenNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kundenNameLabel.Location = new System.Drawing.Point(0, 0);
             this.kundenNameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.kundenNameLabel.Name = "kundenNameLabel";
@@ -145,7 +162,11 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             this.kundennummerNumericUpDown.Enabled = false;
             this.kundennummerNumericUpDown.Location = new System.Drawing.Point(132, 30);
             this.kundennummerNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.kundennummerNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.kundennummerNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.kundennummerNumericUpDown.Name = "kundennummerNumericUpDown";
             this.kundennummerNumericUpDown.ReadOnly = true;
             this.kundennummerNumericUpDown.Size = new System.Drawing.Size(164, 20);
@@ -179,7 +200,11 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             // 
             this.hausnummerNumericUpDown.Location = new System.Drawing.Point(132, 128);
             this.hausnummerNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.hausnummerNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.hausnummerNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.hausnummerNumericUpDown.Name = "hausnummerNumericUpDown";
             this.hausnummerNumericUpDown.Size = new System.Drawing.Size(164, 20);
             this.hausnummerNumericUpDown.TabIndex = 10;
@@ -188,7 +213,11 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             // 
             this.postleitzahlNumericUpDown.Location = new System.Drawing.Point(132, 152);
             this.postleitzahlNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.postleitzahlNumericUpDown.Maximum = new decimal(new int[] {99999999, 0, 0, 0});
+            this.postleitzahlNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.postleitzahlNumericUpDown.Name = "postleitzahlNumericUpDown";
             this.postleitzahlNumericUpDown.Size = new System.Drawing.Size(164, 20);
             this.postleitzahlNumericUpDown.TabIndex = 12;
@@ -211,7 +240,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(155, 224);
+            this.applyButton.Location = new System.Drawing.Point(155, 243);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(141, 23);
             this.applyButton.TabIndex = 18;
@@ -222,7 +251,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(8, 224);
+            this.cancelButton.Location = new System.Drawing.Point(8, 243);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(141, 23);
             this.cancelButton.TabIndex = 17;
@@ -232,7 +261,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(8, 254);
+            this.deleteButton.Location = new System.Drawing.Point(8, 273);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(288, 23);
             this.deleteButton.TabIndex = 19;
@@ -240,13 +269,69 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // bestellungenGroupBox
+            // 
+            this.bestellungenGroupBox.Controls.Add(this.neueBestellungButton);
+            this.bestellungenGroupBox.Controls.Add(this.bestellungsNummerAufrufenButton);
+            this.bestellungenGroupBox.Controls.Add(d_bestellungAufrufenLabel);
+            this.bestellungenGroupBox.Controls.Add(this.bestellungsNummerAufrufenNumericUpDown);
+            this.bestellungenGroupBox.Controls.Add(this.bestellungListBox);
+            this.bestellungenGroupBox.Location = new System.Drawing.Point(302, 12);
+            this.bestellungenGroupBox.Name = "bestellungenGroupBox";
+            this.bestellungenGroupBox.Size = new System.Drawing.Size(203, 284);
+            this.bestellungenGroupBox.TabIndex = 20;
+            this.bestellungenGroupBox.TabStop = false;
+            this.bestellungenGroupBox.Text = "Bestellungen";
+            // 
+            // neueBestellungButton
+            // 
+            this.neueBestellungButton.Location = new System.Drawing.Point(6, 183);
+            this.neueBestellungButton.Name = "neueBestellungButton";
+            this.neueBestellungButton.Size = new System.Drawing.Size(188, 23);
+            this.neueBestellungButton.TabIndex = 22;
+            this.neueBestellungButton.Text = "Neu ...";
+            this.neueBestellungButton.UseVisualStyleBackColor = true;
+            this.neueBestellungButton.Click += new System.EventHandler(this.neueBestellungButton_Click);
+            // 
+            // bestellungsNummerAufrufenButton
+            // 
+            this.bestellungsNummerAufrufenButton.Location = new System.Drawing.Point(132, 248);
+            this.bestellungsNummerAufrufenButton.Name = "bestellungsNummerAufrufenButton";
+            this.bestellungsNummerAufrufenButton.Size = new System.Drawing.Size(62, 20);
+            this.bestellungsNummerAufrufenButton.TabIndex = 25;
+            this.bestellungsNummerAufrufenButton.Text = "Los";
+            this.bestellungsNummerAufrufenButton.UseVisualStyleBackColor = true;
+            this.bestellungsNummerAufrufenButton.Click += new System.EventHandler(this.bestellungsNummerAufrufenButton_Click);
+            // 
+            // bestellungsNummerAufrufenNumericUpDown
+            // 
+            this.bestellungsNummerAufrufenNumericUpDown.Location = new System.Drawing.Point(6, 248);
+            this.bestellungsNummerAufrufenNumericUpDown.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.bestellungsNummerAufrufenNumericUpDown.Name = "bestellungsNummerAufrufenNumericUpDown";
+            this.bestellungsNummerAufrufenNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.bestellungsNummerAufrufenNumericUpDown.TabIndex = 24;
+            // 
+            // bestellungListBox
+            // 
+            this.bestellungListBox.FormattingEnabled = true;
+            this.bestellungListBox.Location = new System.Drawing.Point(6, 30);
+            this.bestellungListBox.Name = "bestellungListBox";
+            this.bestellungListBox.Size = new System.Drawing.Size(188, 147);
+            this.bestellungListBox.TabIndex = 21;
+            this.bestellungListBox.DoubleClick += new System.EventHandler(this.bestellungListBox_DoubleClick);
+            this.bestellungListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.bestellungListBox_KeyUp);
+            // 
             // ViewKunde
             // 
-            this.AcceptButton = this.applyButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(304, 282);
+            this.ClientSize = new System.Drawing.Size(512, 308);
+            this.Controls.Add(this.bestellungenGroupBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.applyButton);
@@ -272,11 +357,14 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kunde - Kundenname";
             this.Load += new System.EventHandler(this.ViewKunde_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.kundennummerNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.hausnummerNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.postleitzahlNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kundennummerNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hausnummerNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postleitzahlNumericUpDown)).EndInit();
+            this.bestellungenGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bestellungsNummerAufrufenNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.TextBox emailAdresseTextBox;
@@ -300,5 +388,11 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
         private System.Windows.Forms.Label kundenNameLabel;
 
         #endregion
+
+        private System.Windows.Forms.GroupBox bestellungenGroupBox;
+        private System.Windows.Forms.ListBox bestellungListBox;
+        private System.Windows.Forms.Button neueBestellungButton;
+        private System.Windows.Forms.Button bestellungsNummerAufrufenButton;
+        private System.Windows.Forms.NumericUpDown bestellungsNummerAufrufenNumericUpDown;
     }
 }

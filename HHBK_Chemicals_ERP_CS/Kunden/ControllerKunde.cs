@@ -1,3 +1,5 @@
+using HHBK_Chemicals_ERP_CS.LegacyMain;
+
 namespace HHBK_Chemicals_ERP_CS.Kunden
 {
     /// <inheritdoc cref="IControllerKunde" />
@@ -23,6 +25,27 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
         public void FormGeladen()
         {
             ModelKunde.KundeZurücksetzen();
+            ModelKunde.BestellungListeAktualisieren();;
         }
+
+        #region Bestellung
+
+        public void BestellungGeklickt(int index)
+        {
+            if (index != -1)
+                ModelKunde.GeklickteBestellungAnsehen(index);
+        }
+
+        public void BestellungMitNummerÖffnen(int nummer)
+        {
+            ModelKunde.BestellungMitNummerÖffnen(nummer);
+        }
+
+        public void NeueBestellungErstellen()
+        {
+            ModelKunde.NeueBestellungErstellen();
+        }
+
+        #endregion
     }
 }
