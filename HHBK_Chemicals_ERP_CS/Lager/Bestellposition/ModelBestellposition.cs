@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 using HHBK_Chemicals_ERP_CS.Datenbank;
 using HHBK_Chemicals_ERP_CS.Kunden;
@@ -90,30 +91,16 @@ namespace HHBK_Chemicals_ERP_CS.Lager
         {
             var produkt = _datenbank.GetProdukt(ViewBestellposition.ArtikelNummer);
             if (produkt == null)
-            {
-                MessageBox.Show("Das Produkt konnte nicht gefunden werden", "Produkt nicht gefunden",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
+                throw new ArgumentException("Das Produkt konnte nicht gefunden werden");
+            
 
-            var kunde = _datenbank.GetKunde(ViewBestellposition.LieferpositionId);
+            var kunde = _datenbank.GetKunde(ViewBestellposition.Kundennummer);
             if (kunde == null)
-            {
-                MessageBox.Show("Der Kunde konnte nicht gefunden werden", "Kunde nicht gefunden",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
+                throw new ArgumentException("Der Kunde konnte nicht gefunden werden");
 
             var lieferposition = _datenbank.GetLieferposition(ViewBestellposition.LieferpositionId);
             if (lieferposition == null)
-            {
-                MessageBox.Show("Die Lieferung konnte nicht gefunden werden", "Lieferung nicht gefunden",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
+                throw new ArgumentException("Die Lieferung konnte nicht gefunden werden");
 
 
             _bestellposition.Produkt = produkt;
