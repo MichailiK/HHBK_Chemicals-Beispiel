@@ -12,7 +12,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
     {
         IControllerKunde Controller { set; }
 
-        int Kundennummer { get; set; }
+        int? Kundennummer { get; set; }
         string Nachname { get; set; }
         string Vorname { get; set; }
         string Strasse { get; set; }

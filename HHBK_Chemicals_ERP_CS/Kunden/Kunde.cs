@@ -6,13 +6,33 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
     /// <seealso cref="IViewKunde" />
     public class Kunde
     {
+    
         /// <summary>
         ///     Die einzigartige Identifikationsnummer des <see cref="Kunde" />
         /// </summary>
         /// <remarks>Dies ist der Primärschlüssel auf der Datenbank</remarks>
-        public readonly int Kundennummer;
+        /// <returns>Die Kundennummer, oder <c>null</c>, falls diese Instanz nicht aus der Datenbank herkommt</returns>
+        public readonly int? Kundennummer;
 
-
+        internal Kunde(
+            string name,
+            string vorname,
+            string strasse,
+            int hausnummer,
+            int postleitzahl,
+            string ort,
+            string emailAdresse)
+        {
+            Kundennummer = null;
+            Name = name;
+            Vorname = vorname;
+            Strasse = strasse;
+            Hausnummer = hausnummer;
+            Postleitzahl = postleitzahl;
+            Ort = ort;
+            EmailAdresse = emailAdresse;
+        }
+        
         public Kunde(int kundennummer,
             string name,
             string vorname,
@@ -30,6 +50,10 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             Postleitzahl = postleitzahl;
             Ort = ort;
             EmailAdresse = emailAdresse;
+        }
+
+        public Kunde()
+        {
         }
 
         public string Name { get; set; }

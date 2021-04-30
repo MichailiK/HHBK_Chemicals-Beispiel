@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,13 +13,13 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
         private const int MaxPreviewEntries = 50;
 
         private readonly IDatenbank _datenbank;
-        private readonly Kunde _kunde;
+        private Kunde _kunde;
         private List<Bestellposition> _bestellungListe;
 
         public ModelKunde(IDatenbank datenbank, Kunde kunde)
         {
             _datenbank = datenbank;
-            _kunde = kunde;
+            _kunde = kunde ?? new Kunde();
         }
 
         public IViewKunde ViewKunde { private get; set; }
@@ -33,7 +34,7 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
             _kunde.Ort = ViewKunde.Ort;
             _kunde.EmailAdresse = ViewKunde.EmailAdresse;
 
-            _datenbank.UpdateKunde(_kunde);
+            _kunde = _datenbank.CreateOrUpdateKunde(_kunde);
         }
 
         public void KundeZurücksetzen()
@@ -57,6 +58,8 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
 
         public void GeklickteBestellungAnsehen(int index)
         {
+            if(_bestellungListe == null)
+                throw new InvalidOperationException();
             BestellungAnsehen(_bestellungListe[index]);
         }
 
@@ -93,9 +96,12 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
 
         public void BestellungListeAktualisieren()
         {
-            _bestellungListe = _datenbank.GetBestellungenVonKunde(_kunde).Take(MaxPreviewEntries).ToList();
+            if (_kunde.Kundennummer == null)
+                _bestellungListe = null;
+            else
+                _bestellungListe = _datenbank.GetBestellungenVonKunde(_kunde).Take(MaxPreviewEntries).ToList();
             ViewKunde.BestellungsListeAktualisieren(
-                _bestellungListe.Select(
+                _bestellungListe?.Select(
                     bestellung => bestellung.Bestellpositionsnummer + ": " + bestellung.Bestellungsnummer));
         }
 

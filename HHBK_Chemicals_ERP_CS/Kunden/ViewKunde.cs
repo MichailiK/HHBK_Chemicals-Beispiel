@@ -16,10 +16,22 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
         public IControllerKunde Controller { private get; set; }
 
 
-        public int Kundennummer
+        public int? Kundennummer
         {
-            get => (int) kundennummerNumericUpDown.Value;
-            set => kundennummerNumericUpDown.Value = value;
+            get => deleteButton.Enabled ? (int?) kundennummerNumericUpDown.Value : null;
+            set
+            {
+                if (value.HasValue)
+                {
+                    kundennummerNumericUpDown.Value = value.Value;
+                    deleteButton.Enabled = true;
+                }
+                else
+                {
+                    kundennummerNumericUpDown.Value = 0;
+                    deleteButton.Enabled = false;
+                }
+            }
         }
 
         public string Vorname
@@ -132,8 +144,17 @@ namespace HHBK_Chemicals_ERP_CS.Kunden
 
         public void BestellungsListeAktualisieren(IEnumerable<string> namen)
         {
+            
             bestellungListBox.Items.Clear();
-            bestellungListBox.Items.AddRange(namen.Cast<object>().ToArray());
+            if (namen == null)
+            {
+                bestellungenGroupBox.Enabled = false;
+            }
+            else
+            {
+                bestellungenGroupBox.Enabled = true;
+                bestellungListBox.Items.AddRange(namen.Cast<object>().ToArray());
+            }
         }
 
         private void bestellungListBox_DoubleClick(object sender, EventArgs e)

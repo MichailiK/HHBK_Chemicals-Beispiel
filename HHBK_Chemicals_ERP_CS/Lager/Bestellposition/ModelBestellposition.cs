@@ -119,7 +119,7 @@ namespace HHBK_Chemicals_ERP_CS.Lager
             ViewBestellposition.Bestellungsnummer = _bestellposition.Bestellungsnummer;
             ViewBestellposition.Menge = _bestellposition.Menge;
             ViewBestellposition.Bestelldatum = _bestellposition.Bestelldatum;
-            ViewBestellposition.Kundennummer = _bestellposition.Kunde.Kundennummer;
+            ViewBestellposition.Kundennummer = _bestellposition.Kunde?.Kundennummer ?? 0;
             ViewBestellposition.LieferpositionId = _bestellposition.Lieferposition?.Id ?? 0;
         }
 

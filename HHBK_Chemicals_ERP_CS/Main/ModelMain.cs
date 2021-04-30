@@ -43,7 +43,7 @@ namespace HHBK_Chemicals_ERP_CS.Main
 
         public void NeuenKundeErstellen()
         {
-            KundeAnsehen(_datenbank.CreateKunde("", ""));
+            KundeAnsehen(null);
         }
 
 

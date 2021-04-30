@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using HHBK_Chemicals_ERP_CS.Kunden;
 using HHBK_Chemicals_ERP_CS.Lager;
@@ -50,14 +51,31 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         /// <param name="name">Der Nachname des Kunden</param>
         /// <param name="vorname">Der Vorname des Kunden</param>
         /// <returns>Der neu erstellte <see cref="Kunde" /></returns>
+        [Obsolete("Benutze CreateOrUpdateKunde stattdessen")]
         Kunde CreateKunde(string name, string vorname);
+        
+        /// <summary>
+        ///     Erstellt einen neuen <see cref="Kunde" /> auf der <see cref="IDatenbank" /> und gibt diese zurück
+        /// </summary>
+        /// <param name="other">Der Kunde</param>
+        /// <returns>Ein neu erstellte <see cref="Kunde" /> mit einer <see cref="Kunde.Kundennummer"/></returns>
+        [Obsolete("Benutze CreateOrUpdateKunde stattdessen")]
+        Kunde CreateKunde(Kunde other);
 
         /// <summary>
         ///     Aktualisiert ein <see cref="Kunde" /> mit den neuen Daten auf der <see cref="IDatenbank" />
         /// </summary>
         /// <param name="kunde">Der <see cref="Kunde" /> der aktualisiert werden soll</param>
+        [Obsolete("Benutze CreateOrUpdateKunde stattdessen")]
         void UpdateKunde(Kunde kunde);
-
+        
+        /// <summary>
+        ///     Aktualisier oder fügt ein neuen <see cref="Kunde"/> auf der <see cref="IDatenbank"/> hinzu
+        /// </summary>
+        /// <param name="other">Der Kunde</param>
+        /// <returns>Die selbe Instanz, oder eine neue Instanz mit der <see cref="Kunde.Kundennummer"/> angegeben</returns>
+        Kunde CreateOrUpdateKunde(Kunde other);
+        
         /// <summary>
         ///     Holt eine <see cref="IEnumerable{T}" /> von <see cref="Bestellposition" /> eines <see cref="Kunde" />n
         ///     aus der <see cref="IDatenbank" />

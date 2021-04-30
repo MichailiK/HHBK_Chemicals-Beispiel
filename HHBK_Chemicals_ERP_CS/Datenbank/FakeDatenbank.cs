@@ -156,7 +156,7 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
 
         public bool DeleteKunde(Kunde kunde)
         {
-            return DeleteKunde(kunde.Kundennummer);
+            return DeleteKunde(kunde.Kundennummer ?? throw new ArgumentException("Gegebener Kunde hat keine Kundennummer"));
         }
 
         public bool DeleteKunde(int kundennummer)
@@ -167,28 +167,39 @@ namespace HHBK_Chemicals_ERP_CS.Datenbank
         public Kunde CreateKunde(string name, string vorname)
         {
             var kunde = new Kunde(++_kundenAutoIncrementCount, name, vorname, "", 0, 0, "", "");
-            AddOrUpdateKunde(kunde);
+            CreateOrUpdateKunde(kunde);
             return kunde;
+        }
+        
+        public Kunde CreateKunde(Kunde o)
+        {
+            CreateOrUpdateKunde(o);
+            return o;
         }
 
         public void UpdateKunde(Kunde kunde)
         {
-            AddOrUpdateKunde(kunde);
+            CreateOrUpdateKunde(kunde);
         }
 
 
-        private void AddOrUpdateKunde(Kunde kunde)
+        public Kunde CreateOrUpdateKunde(Kunde o)
         {
-            if (_kunden.ContainsKey(kunde.Kundennummer))
-                _kunden.Remove(kunde.Kundennummer);
+            if(!o.Kundennummer.HasValue)
+                o = new Kunde(++_kundenAutoIncrementCount, o.Name, o.Vorname, o.Strasse, o.Hausnummer, o.Postleitzahl, o.Ort, o.EmailAdresse);;
+            
+            // ReSharper disable once PossibleInvalidOperationException
+            if (_kunden.ContainsKey(o.Kundennummer.Value))
+                _kunden.Remove(o.Kundennummer.Value);
 
-            _kunden.Add(kunde.Kundennummer, kunde);
+            _kunden.Add(o.Kundennummer.Value, o);
+            return o;
         }
 
 
         public IEnumerable<Bestellposition> GetBestellungenVonKunde(Kunde kunde)
         {
-            return GetBestellungenVonKunde(kunde.Kundennummer);
+            return GetBestellungenVonKunde(kunde.Kundennummer ?? throw new ArgumentException("Gegebener Kunde hat keine Kundennummer"));
         }
 
         public IEnumerable<Bestellposition> GetBestellungenVonKunde(int kundennummer)
